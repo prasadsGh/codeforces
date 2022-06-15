@@ -21,10 +21,10 @@ int main(){
         // }
         // cout<<endl;
         vector<int> v;
-        for(int i=0;i<n-1;i++)
+        for(int i=0;i<n;i++)
         {
             int count=1;
-            while(arr[i]==arr[i+1])
+            while(arr[i]==arr[i+1] && i<n-1)
             {
                 count++;
                 i++;
@@ -32,10 +32,7 @@ int main(){
             } 
             
             v.push_back(count);
-             if(i==n-2)
-                {
-                    if(arr[n-2]!=arr[n-1]) v.push_back(1);
-                }
+            
 
         }
         // for(int x:v)
