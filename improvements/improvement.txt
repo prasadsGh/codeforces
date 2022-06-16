@@ -1,2 +1,3 @@
-1)count the distinct element in the array-->focus on the loop endings
-and keep all the ending proper so that it will be counted wihtout leaving any digit 
+-->string problems 
+-->permutation problems 
+-->loop bounds(carefully put them) 
