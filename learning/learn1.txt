@@ -1,0 +1,21 @@
+string manipulataion 
+set STL
+
+
+
+
+
+
+-----------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+-->>atoi--changes int to string 
+
+int x=10;
+
+string s=atoi(x);// x value is stored in s as string
+
+-->>stoi--changes from string to int
+
+-->>to check uppercase--isupper(), for lowercase--islower
+-->>to change to lowercase--tolower(), to change to uppercase--toupper()
+-->>use set to get the distinct element from repeatating array--use set_name.insert() function
