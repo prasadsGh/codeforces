@@ -2,3 +2,5 @@
 -->permutation problems 
 -->loop bounds(carefully put them) 
 -->check min 10 test cases of your own-->stretching to the corner cases 
+-->check the editorial of every problem after solving the question 
+    you might find the new stuff 
