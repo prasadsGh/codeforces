@@ -5,7 +5,8 @@ int main(){
     int n;
     cin>>n;
     vector<int> v;
-    int k,sum=0;
+    int k,sum=0
+        ;
     for(int i=0;i<n;i++)
     {
         cin>>k;
