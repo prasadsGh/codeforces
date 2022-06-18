@@ -26,6 +26,7 @@ void solve()
         sort(v.begin(),v.end());
         if((min_ind+1)%2==0) cout<<v[1]<<endl;
         else if((min_ind+1)%2==1) cout<<v[0]<<endl;
+        
     }
 
 }
