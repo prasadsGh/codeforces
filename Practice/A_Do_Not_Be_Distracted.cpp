@@ -36,11 +36,6 @@ double eps = 1e-12;
  
 
 void solve(){
-    int a,b,c,d;
-    cin>>a>>b>>c>>d;
-    if(c>max(a,b) && d>max(a,b)) cout<<"NO\n";
-    else if(a>max(c,d) && b>max(c,d)) cout<<"NO\n";
-    else cout<<"YES\n"; 
 }
 int main()
 {
@@ -48,7 +43,6 @@ int main()
  ll t;
  cin >> t;
  while(t--) {
-    solve();
  }
  return 0;
 }
