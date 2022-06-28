@@ -36,6 +36,13 @@ double eps = 1e-12;
  
 
 void solve(){
+    int n;
+    cin>>n;
+    string s;
+    cin>>s;
+    vector<bool> v(26,false);
+    
+
 }
 int main()
 {
@@ -43,6 +50,7 @@ int main()
  ll t;
  cin >> t;
  while(t--) {
+    solve();
  }
  return 0;
 }
