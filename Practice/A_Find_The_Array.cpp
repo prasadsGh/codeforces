@@ -33,45 +33,17 @@ double eps = 1e-12;
 #define fast_cin() ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
 #define all(x) (x).begin(), (x).end()
 #define sz(x) ((ll)(x).size())
- 
+
+
 
 void solve(){
     int n;
     cin>>n;
-    string s;
-    cin>>s;
-    vector<char> v;
-    // v.push_back(s[0]);
-    // for(int i=0;i<n-1;i++)
-    // {
-    //     if(s[i]!=s[i+1]) v.push_back(s[i]);
-
-    // }
-    // if(s[n-1]!=s[n-2]) v.push_back(s[n-1]);
-    for(int i=0;i<n;i++)
-    {
-        v.push_back(s[i]);
-        while(s[i]==s[i+1]) i++;
-    }
-    int k=v.size();
-    //    for(char x: v)
-    // {
-    //     cout<<x<<" ";
-    // }
-    // cout<<endl;
-    int flag=0;
-    for(int i=0;i<k;i++)
-    {
-        for(int j=i+1;j<k;j++)
-        {
-            if(v[i]==v[j])flag=1;
-        }
-    }
-    if(flag==0) cout<<"YES\n";
-    else cout<<"NO\n";
-
-    
-
+    int k=sqrt(n);
+    // cout<<k<<endl;
+    if(((k*k)==(n*n))) cout<<sqrt(n)<<endl;
+    else cout<<int(sqrt(n))-1<<endl;
+   
 }
 int main()
 {
@@ -79,7 +51,7 @@ int main()
  ll t;
  cin >> t;
  while(t--) {
-    solve();
+solve();
  }
  return 0;
 }

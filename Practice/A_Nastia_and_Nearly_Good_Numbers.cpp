@@ -36,42 +36,17 @@ double eps = 1e-12;
  
 
 void solve(){
-    int n;
-    cin>>n;
-    string s;
-    cin>>s;
-    vector<char> v;
-    // v.push_back(s[0]);
-    // for(int i=0;i<n-1;i++)
-    // {
-    //     if(s[i]!=s[i+1]) v.push_back(s[i]);
-
-    // }
-    // if(s[n-1]!=s[n-2]) v.push_back(s[n-1]);
-    for(int i=0;i<n;i++)
-    {
-        v.push_back(s[i]);
-        while(s[i]==s[i+1]) i++;
+    ll x,y;
+    cin>>x>>y;
+    if(y==1) cout<<"NO\n";
+    else {
+        cout<<"YES\n";
+        // cout<<(x*(y))<<" "<<x<<" "<<x*(y+1)<<endl;
+        ll a = x*y;
+        ll b = x;
+        ll c = x*(y+1);
+        cout<<a<<" "<<b<<" "<<c<<"\n";
     }
-    int k=v.size();
-    //    for(char x: v)
-    // {
-    //     cout<<x<<" ";
-    // }
-    // cout<<endl;
-    int flag=0;
-    for(int i=0;i<k;i++)
-    {
-        for(int j=i+1;j<k;j++)
-        {
-            if(v[i]==v[j])flag=1;
-        }
-    }
-    if(flag==0) cout<<"YES\n";
-    else cout<<"NO\n";
-
-    
-
 }
 int main()
 {
@@ -79,7 +54,7 @@ int main()
  ll t;
  cin >> t;
  while(t--) {
-    solve();
+solve();
  }
  return 0;
 }

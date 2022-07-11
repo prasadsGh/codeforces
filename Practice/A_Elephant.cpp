@@ -36,50 +36,45 @@ double eps = 1e-12;
  
 
 void solve(){
-    int n;
+    ll n;
     cin>>n;
-    string s;
-    cin>>s;
-    vector<char> v;
-    // v.push_back(s[0]);
-    // for(int i=0;i<n-1;i++)
-    // {
-    //     if(s[i]!=s[i+1]) v.push_back(s[i]);
-
-    // }
-    // if(s[n-1]!=s[n-2]) v.push_back(s[n-1]);
-    for(int i=0;i<n;i++)
+    int count=0;
+    int temp1=n;
+    while(temp1>0 && temp1>=5)
     {
-        v.push_back(s[i]);
-        while(s[i]==s[i+1]) i++;
+        count++;
+        temp1/=5;
     }
-    int k=v.size();
-    //    for(char x: v)
-    // {
-    //     cout<<x<<" ";
-    // }
-    // cout<<endl;
-    int flag=0;
-    for(int i=0;i<k;i++)
+    int temp2=(n%5);
+    while(temp2>0 && temp2>=4)
     {
-        for(int j=i+1;j<k;j++)
-        {
-            if(v[i]==v[j])flag=1;
-        }
+        count++;
+        temp2/=4;
     }
-    if(flag==0) cout<<"YES\n";
-    else cout<<"NO\n";
+    int  temp3= ((n%5)%4);
+    while(temp3>0 && temp3>=3)
+    {
+        count++;
+        temp3/=3;
 
-    
-
+    }
+    int temp4=( ((n%5)%4)%3);
+    while(temp4>0 && temp4>=2)
+    {
+        count++;
+        temp4/=2;
+    }
+    count+=((((n%5)%4)%3)%2);
+    cout<<count<<endl;
 }
 int main()
 {
- fast_cin();
- ll t;
- cin >> t;
- while(t--) {
-    solve();
- }
+//  fast_cin();
+//  ll t;
+//  cin >> t;
+//  while(t--) {
+// solve();
+//  }
+solve();
  return 0;
 }

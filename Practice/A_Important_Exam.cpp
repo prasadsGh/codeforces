@@ -36,50 +36,68 @@ double eps = 1e-12;
  
 
 void solve(){
-    int n;
-    cin>>n;
-    string s;
-    cin>>s;
-    vector<char> v;
-    // v.push_back(s[0]);
-    // for(int i=0;i<n-1;i++)
-    // {
-    //     if(s[i]!=s[i+1]) v.push_back(s[i]);
-
-    // }
-    // if(s[n-1]!=s[n-2]) v.push_back(s[n-1]);
-    for(int i=0;i<n;i++)
-    {
-        v.push_back(s[i]);
-        while(s[i]==s[i+1]) i++;
-    }
-    int k=v.size();
-    //    for(char x: v)
-    // {
-    //     cout<<x<<" ";
-    // }
-    // cout<<endl;
-    int flag=0;
-    for(int i=0;i<k;i++)
-    {
-        for(int j=i+1;j<k;j++)
-        {
-            if(v[i]==v[j])flag=1;
-        }
-    }
-    if(flag==0) cout<<"YES\n";
-    else cout<<"NO\n";
-
-    
+   
 
 }
+
 int main()
 {
  fast_cin();
- ll t;
- cin >> t;
- while(t--) {
-    solve();
- }
+//  ll t;
+//  cin >> t;
+//  while(t--) {
+// solve();
+//  }
+// solve();
+ int n,m;
+    cin>>n>>m;
+    char v[n][m];
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<m;j++)
+        {
+           cin>>v[i][j];
+        }
+    }
+    int arr[m];
+    long long sum=0;
+    for(int i=0;i<m;i++)
+    {
+        cin>>arr[i];
+        
+    }
+    // for(int i=0;i<m;i++)
+    // {
+    //     sum+=arr[i];
+    char ans[m]=
+    for(int j=0;j<m;j++)
+    {
+        int count_A=0,count_B=0,count_C=0,count_C=0,count_D=0,count_E=0;
+        for(int i=0;i<n;i++)
+        {
+            if(v[i][j]=='A') count_A++;
+            else if(v[i][j]=='B') count_B++;
+            else if(v[i][j]=='C') count_C++;
+            else if(v[i][j]=='D') count_D++;
+            else if(v[i][j]=='E') count_E++;
+
+        }
+        int k=max(max(max(count_A,count_B),max(count_C,count_D)),count_E);
+        if(k==)
+
+    }
+    // }
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<m;j++)
+        {
+            if(v[i][j]==v[0][j])
+            {
+                sum+=arr[j];
+            }
+        }
+    }
+    cout<<sum<<endl;
+
  return 0;
 }

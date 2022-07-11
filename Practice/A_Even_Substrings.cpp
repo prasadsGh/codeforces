@@ -1,5 +1,7 @@
+//this code belongs to prasad patil
 #pragma GCC optimize("Ofast")
 #pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,avx2,fma")
+//this code belongs to prasad patil
 #pragma GCC optimize("unroll-loops")
 #include <bits/stdc++.h> 
  
@@ -17,6 +19,7 @@ typedef vector<vector<ll> > vv64;
 typedef vector<vector<p64> > vvp64;
 typedef vector<p64> vp64;
 typedef vector<p32> vp32;
+//this code belongs to prasad patil
 ll MOD = 998244353;
 double eps = 1e-12;
 #define forn(i,e) for(ll i = 0; i < e; i++)
@@ -31,6 +34,7 @@ double eps = 1e-12;
 #define se second
 #define INF 2e18
 #define fast_cin() ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
+//this code belongs to prasad patil
 #define all(x) (x).begin(), (x).end()
 #define sz(x) ((ll)(x).size())
  
@@ -40,46 +44,19 @@ void solve(){
     cin>>n;
     string s;
     cin>>s;
-    vector<char> v;
-    // v.push_back(s[0]);
-    // for(int i=0;i<n-1;i++)
-    // {
-    //     if(s[i]!=s[i+1]) v.push_back(s[i]);
-
-    // }
-    // if(s[n-1]!=s[n-2]) v.push_back(s[n-1]);
+    int sum=0;
     for(int i=0;i<n;i++)
     {
-        v.push_back(s[i]);
-        while(s[i]==s[i+1]) i++;
+        
+        int k= (int(s[i])-48);
+        if(k%2==0) sum+=(i+1);
+        
     }
-    int k=v.size();
-    //    for(char x: v)
-    // {
-    //     cout<<x<<" ";
-    // }
-    // cout<<endl;
-    int flag=0;
-    for(int i=0;i<k;i++)
-    {
-        for(int j=i+1;j<k;j++)
-        {
-            if(v[i]==v[j])flag=1;
-        }
-    }
-    if(flag==0) cout<<"YES\n";
-    else cout<<"NO\n";
-
-    
-
+    cout<<sum<<endl;
 }
 int main()
 {
- fast_cin();
- ll t;
- cin >> t;
- while(t--) {
-    solve();
- }
+
+solve();
  return 0;
 }

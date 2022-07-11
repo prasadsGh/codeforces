@@ -33,45 +33,39 @@ double eps = 1e-12;
 #define fast_cin() ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
 #define all(x) (x).begin(), (x).end()
 #define sz(x) ((ll)(x).size())
+
  
 
 void solve(){
+    int a1,b1,a2,b2;
+    char c;
+    cin>>a1>>b1>>c>>a2>>b2;
     int n;
     cin>>n;
-    string s;
-    cin>>s;
-    vector<char> v;
-    // v.push_back(s[0]);
-    // for(int i=0;i<n-1;i++)
-    // {
-    //     if(s[i]!=s[i+1]) v.push_back(s[i]);
-
-    // }
-    // if(s[n-1]!=s[n-2]) v.push_back(s[n-1]);
-    for(int i=0;i<n;i++)
-    {
-        v.push_back(s[i]);
-        while(s[i]==s[i+1]) i++;
-    }
-    int k=v.size();
-    //    for(char x: v)
-    // {
-    //     cout<<x<<" ";
-    // }
-    // cout<<endl;
-    int flag=0;
-    for(int i=0;i<k;i++)
-    {
-        for(int j=i+1;j<k;j++)
-        {
-            if(v[i]==v[j])flag=1;
-        }
-    }
-    if(flag==0) cout<<"YES\n";
-    else cout<<"NO\n";
-
+    int count=0;
     
+    if(a1==0 and a2==0)
+    {
+       while((a2<6 && b2<6) && (a2==b2))
+       {
+        count++;
+       }
+    }
+    if(a1==1 && b1==1)
+    {
+        while((a2<6 && b2<6) && (a2==b2))
+       {
+        count++;
+       }
 
+    }
+    if((a2==2 && b2==2) && (a2==b2))
+    {
+         while((a2<4 && b2<4) && (a2==b2))
+       {
+        count++;
+       }
+    } 
 }
 int main()
 {
@@ -79,7 +73,7 @@ int main()
  ll t;
  cin >> t;
  while(t--) {
-    solve();
+solve();
  }
  return 0;
 }

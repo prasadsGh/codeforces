@@ -33,45 +33,49 @@ double eps = 1e-12;
 #define fast_cin() ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
 #define all(x) (x).begin(), (x).end()
 #define sz(x) ((ll)(x).size())
- 
-
-void solve(){
-    int n;
-    cin>>n;
-    string s;
-    cin>>s;
-    vector<char> v;
-    // v.push_back(s[0]);
-    // for(int i=0;i<n-1;i++)
-    // {
-    //     if(s[i]!=s[i+1]) v.push_back(s[i]);
-
-    // }
-    // if(s[n-1]!=s[n-2]) v.push_back(s[n-1]);
+int min_val(int arr[],int n)
+{
+    int x=0;
     for(int i=0;i<n;i++)
     {
-        v.push_back(s[i]);
-        while(s[i]==s[i+1]) i++;
+        if(arr[i]>arr[x]) x=i;
     }
-    int k=v.size();
-    //    for(char x: v)
-    // {
-    //     cout<<x<<" ";
-    // }
-    // cout<<endl;
-    int flag=0;
-    for(int i=0;i<k;i++)
+    return x;
+}
+ 
+ int max_val(int arr[], int n)
+ {
+      int x=0;
+    for(int i=0;i<n;i++)
     {
-        for(int j=i+1;j<k;j++)
-        {
-            if(v[i]==v[j])flag=1;
-        }
+        if(arr[i]<arr[x]) x=i;
     }
-    if(flag==0) cout<<"YES\n";
-    else cout<<"NO\n";
+    return x;
+ }
+ int minimum(int x,int y)
+ {
+    return (x<y)?x:y;
+ }
+  int maximum(int x,int y)
+ {
+    return (x>y)?x:y;
+ }
 
+void solve(){
+    ll n;
+    cin>>n;
+    int arr[n];
+    for(int i=0;i<n;i++)
+    {
+        cin>>arr[i];
+    }
+    int a=min_val(arr,n);
+    int b=max_val(arr,n);
+    int x=(minimum(a+1,(n-a-1))+minimum(b+1,minimum(n-b-1,abs(a-b))));
+    int y=(minimum(b+1,(n-b-1))+minimum(a+1,minimum(n-a-1,abs(a-b))));
+    cout<<x<<" "<<y<<endl;
+    cout<<minimum(x,y)+1<<endl;
     
-
 }
 int main()
 {
@@ -79,7 +83,7 @@ int main()
  ll t;
  cin >> t;
  while(t--) {
-    solve();
+solve();
  }
  return 0;
 }
