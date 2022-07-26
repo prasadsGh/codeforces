@@ -33,7 +33,7 @@ double eps = 1e-12;
 #define fast_cin() ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
 #define all(x) (x).begin(), (x).end()
 #define sz(x) ((ll)(x).size())
-int min_val(int arr[],int n)
+int min_value(int arr[],int n)
 {
     int x=0;
     for(int i=0;i<n;i++)
@@ -43,7 +43,7 @@ int min_val(int arr[],int n)
     return x;
 }
  
- int max_val(int arr[], int n)
+ int max_value(int arr[], int n)
  {
       int x=0;
     for(int i=0;i<n;i++)
@@ -52,14 +52,7 @@ int min_val(int arr[],int n)
     }
     return x;
  }
- int minimum(int x,int y)
- {
-    return (x<y)?x:y;
- }
-  int maximum(int x,int y)
- {
-    return (x>y)?x:y;
- }
+ 
 
 void solve(){
     ll n;
@@ -69,13 +62,20 @@ void solve(){
     {
         cin>>arr[i];
     }
-    int a=min_val(arr,n);
-    int b=max_val(arr,n);
-    int x=(minimum(a+1,(n-a-1))+minimum(b+1,minimum(n-b-1,abs(a-b))));
-    int y=(minimum(b+1,(n-b-1))+minimum(a+1,minimum(n-a-1,abs(a-b))));
-    cout<<x<<" "<<y<<endl;
-    cout<<minimum(x,y)+1<<endl;
-    
+    int a=min_value(arr,n);
+    int b=max_value(arr,n);
+    int k=(n-b);
+    int l=(n-a);
+  int a1=((a+1)+  min(abs(a-b),k));
+  int a2=((b+1)+  min(abs(a-b),l));
+  int a3=((n-a)+ min(abs(a-b),(b+1)));
+  int a4=((n-b)+min(abs(a-b),(a+1)));
+
+  cout<<min(min(a1,a2),min(a3,a4))<<endl;
+  
+ 
+  
+  
 }
 int main()
 {

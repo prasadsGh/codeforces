@@ -39,10 +39,9 @@ double eps = 1e-12;
 void solve(){
     int n;
     cin>>n;
-    int k=sqrt(n);
-    // cout<<k<<endl;
-    if(((k*k)==(n*n))) cout<<sqrt(n)<<endl;
-    else cout<<int(sqrt(n))-1<<endl;
+    double k=sqrt(n);
+    cout<<ceil(k)<<endl;
+   
    
 }
 int main()

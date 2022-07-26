@@ -1,5 +1,7 @@
+//this code belongs to prasad patil
 #pragma GCC optimize("Ofast")
 #pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,avx2,fma")
+//this code belongs to prasad patil
 #pragma GCC optimize("unroll-loops")
 #include <bits/stdc++.h> 
  
@@ -17,6 +19,7 @@ typedef vector<vector<ll> > vv64;
 typedef vector<vector<p64> > vvp64;
 typedef vector<p64> vp64;
 typedef vector<p32> vp32;
+//this code belongs to prasad patil
 ll MOD = 998244353;
 double eps = 1e-12;
 #define forn(i,e) for(ll i = 0; i < e; i++)
@@ -31,50 +34,36 @@ double eps = 1e-12;
 #define se second
 #define INF 2e18
 #define fast_cin() ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
+//this code belongs to prasad patil
 #define all(x) (x).begin(), (x).end()
 #define sz(x) ((ll)(x).size())
  
 
-void solve(){
+void prasad(){
     ll n;
     cin>>n;
-    int count=0;
-    int temp1=n;
-    while(temp1>0 && temp1>=5)
+    int ans=0;
+    if(n<=5) 
     {
-        count++;
-        temp1/=5;
+        ans=1;
     }
-    int temp2=(n%5);
-    while(temp2>0 && temp2>=4)
-    {
-        count++;
-        temp2/=4;
+    else{
+        ans+=(n/5);
+        n-=((n/5)*5);
+        ans+=(n/4);
+        if(n>=4)  n-=((n/4)*4);
+         ans+=(n/3);
+        if(n>=3) n-=((n/3)*3);
+         ans+=(n/2);
+        if(n>=2) n-=((n/2)*2);
+         ans+=(n/1);
+        if(n>=1)  n-=((n/1)*1);
+    
     }
-    int  temp3= ((n%5)%4);
-    while(temp3>0 && temp3>=3)
-    {
-        count++;
-        temp3/=3;
-
-    }
-    int temp4=( ((n%5)%4)%3);
-    while(temp4>0 && temp4>=2)
-    {
-        count++;
-        temp4/=2;
-    }
-    count+=((((n%5)%4)%3)%2);
-    cout<<count<<endl;
+    cout<<ans<<endl;
 }
 int main()
 {
-//  fast_cin();
-//  ll t;
-//  cin >> t;
-//  while(t--) {
-// solve();
-//  }
-solve();
+ prasad();
  return 0;
 }
