@@ -79,32 +79,29 @@ double eps = 1e-12;
  
 
 void prasad(){
+    ll r,g,b;
+    cin>>r>>g>>b;
+    ll count1= ((r/3)+(g/3)+(b/3));
+    ll k=min((r%3),(g%3));
+    ll l=min((r%3),(b%3));
+    ll m=min((b%3),(g%3));
+    ll count2=((r/3)+(g/3)+(min(b,k))+((b-k)/3));
+    ll count3=((r/3)+(b/3)+(min(g,l))+((g-l)/3));
+    ll count4=((b/3)+(g/3)+(min(r,m))+((r-m)/3));
+    ll min_val= min(r,min(g,b));
+    r-=min_val;
+    g-=min_val;
+    b-=min_val;
 
-    ll n;
-    cin>>n;
-    int t=n;
-   if(n==1) cout<<"1\n";
-   else 
-   {
-        
-        int j=0;
-        int k=0;
-        int sum=1;
-        int result=0;
-      for(int i=0;i<t;i++)
-      {
-       
-        sum+=(j);
-         j++;
-       result+=sum;
+    ll count5=(min_val+((r/3)+(g/3)+(b/3)));
+    ll ans=max(max(max(count1,count2),max(count3,count4)),count5);
+    cout<<ans<<endl;
 
-      }
-      cout<<result<<endl;
-    
-   }
+   
+
 }
 int main()
 {
- prasad();
+prasad();
  return 0;
 }

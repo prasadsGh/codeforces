@@ -79,32 +79,59 @@ double eps = 1e-12;
  
 
 void prasad(){
+    int x1,y1,x2,y2,x3,y3;
+    cin>>x1>>y1>>x2>>y2>>x3>>y3;
+    ll ans=0;
+    ll temp=max(x1,x2);
+    x2=min(x1,x2);
+    x1=temp;
+    ll temp1=max(y1,y2);
+    y2=min(y1,y2);
+    y1=temp1;
 
-    ll n;
-    cin>>n;
-    int t=n;
-   if(n==1) cout<<"1\n";
-   else 
-   {
+    if(((x1==x2) && (x2==x3)))
+    {
+        if((y3<y1) && (y3>y2))
+        {
+            ans=(abs(x1-x2)+abs(y1-y2)+2);
+            cout<<ans<<endl;
+        }
+        else 
+        {
+             ans=(abs(x1-x2)+abs(y1-y2));
+             cout<<ans<<endl;
+        }
+    }
+    else if(((y1==y2)&& (y2==y3)))
+    {
+        if((x3<x1) && (x3>x2))
+        {
+            ans=(abs(x1-x2)+abs(y1-y2)+2);
+            cout<<ans<<endl;
+        }
+        else 
+        {
+             ans=(abs(x1-x2)+abs(y1-y2));
+             cout<<ans<<endl;
+        }
+
+    }
         
-        int j=0;
-        int k=0;
-        int sum=1;
-        int result=0;
-      for(int i=0;i<t;i++)
-      {
-       
-        sum+=(j);
-         j++;
-       result+=sum;
+    else 
+    {
+        ans=(abs(x1-x2)+abs(y1-y2));
+        cout<<ans<<endl;
+    }
 
-      }
-      cout<<result<<endl;
-    
-   }
+
 }
 int main()
 {
+ fast_cin();
+ ll t;
+ cin >> t;
+ while(t--) {
  prasad();
+ }
  return 0;
 }

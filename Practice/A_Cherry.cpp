@@ -76,57 +76,28 @@ double eps = 1e-12;
 //this code belongs to prasad patil
 #define all(x) (x).begin(), (x).end()
 #define sz(x) ((ll)(x).size())
-
  
 
 void prasad(){
-    int n;
+    ll n;
     cin>>n;
-    int m=0;
-    vector<int> arr;
+    vector<ll> arr;
     for(int i=0;i<n;i++)
     {
+        int m;
         cin>>m;
         arr.push_back(m);
     }
-    ll k=*max_element(arr.begin(),arr.end());
-   
-    vector<ll>ans;  
-    ll op=0;  
-    for(int i=0;i<n;i++)
+    ll ans=0;
+    ll a=0;
+    for(int i=1;i<n;i++)
     {
-        if(arr[i]==k)
-        {
-            if(i==0) 
-            {
-                string h;
+        a=(arr[i]*arr[i-1]);
 
-                h= multiply(to_string(arr[0]),to_string(arr[1]));
-                op=stoll(h);
-                ans.push_back(op);
-            }
-            else if(i==(n-1))
-            {
-                string l;
-                l=multiply(to_string(arr[n-1]),to_string(arr[n-2]));
-                op=stoll(l);
-                 ans.push_back(op);
-            }
-            else 
-            {
-               string z=multiply(to_string(arr[i]),to_string(arr[i+1]));
-                string p=multiply(to_string(arr[i]),to_string(arr[i-1]));
-                ll op1=stoll(z);
-                ll op2=stoll(p);
-                op= max(op1,op2);
-                 ans.push_back(op);
-            }
-        }
-
+        ans=max((ans),a);
     }
-    ll result=0;
-    result= *max_element(ans.begin(),ans.end());
-    cout<<result<<endl;
+
+    cout<<ans<<endl;
 }
 int main()
 {

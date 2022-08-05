@@ -79,32 +79,53 @@ double eps = 1e-12;
  
 
 void prasad(){
-
     ll n;
     cin>>n;
-    int t=n;
-   if(n==1) cout<<"1\n";
-   else 
-   {
-        
-        int j=0;
-        int k=0;
-        int sum=1;
-        int result=0;
-      for(int i=0;i<t;i++)
-      {
-       
-        sum+=(j);
-         j++;
-       result+=sum;
+    int flag=0;
+    ll arr[n];
+    for(int i=0;i<n;i++)
+    {
+        cin>>arr[i];
+    }
+    ll avg=0;
+     for(int i=0;i<n;i++)
+    {
+        avg+=arr[i];
+    }
+    if((avg%n)!=0) flag=1;
+    ll count=0;
+    ll sum=0;
 
-      }
-      cout<<result<<endl;
+    if((avg%n)==0)
+    {
+        avg=((avg/n));
+        for(int i=0;i<n;i++)
+        {
+            if((arr[i]-avg)<=0) sum+=((avg-arr[i]));
+        }
+        sort(arr,arr+n);
+        for(int i=(n-1);i>=0;i--)
+        {
+            if((arr[i]-avg)>0)
+            {
+                sum+=(avg-arr[i]);
+                count++;
+            }
+            if(sum==0) break;
+        }
+
+    }
+    if(flag==0) cout<<count<<endl;
+    else cout<<"-1\n";
     
-   }
 }
 int main()
 {
+ fast_cin();
+ ll t;
+ cin >> t;
+ while(t--) {
  prasad();
+ }
  return 0;
 }

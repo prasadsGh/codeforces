@@ -79,32 +79,79 @@ double eps = 1e-12;
  
 
 void prasad(){
-
-    ll n;
-    cin>>n;
-    int t=n;
-   if(n==1) cout<<"1\n";
-   else 
-   {
-        
-        int j=0;
-        int k=0;
-        int sum=1;
-        int result=0;
-      for(int i=0;i<t;i++)
-      {
-       
-        sum+=(j);
-         j++;
-       result+=sum;
-
-      }
-      cout<<result<<endl;
+    ll n,a,b;
+    cin>>n>>a>>b;
+    string s;
+    cin>>s;
     
-   }
+    ll ans=0;
+    vector<int> countNum;
+    if(a>b)
+    {
+  
+        ll count1=0;
+        ll count2=0;
+        if(s[0]=='0')
+        { 
+            for(int i=0;i<(n);i++)
+            {
+                count2=0;
+                
+              while((s[i]=='1'))
+              {
+                count2++;
+                i++;
+                
+              }
+              if(s[i]=='0') count1++;
+              countNum.push_back(count2);
+            }
+
+        }
+        else 
+        {
+           
+        
+            for(int i=0;i<(n);i++)
+            {
+                count2=0;
+                
+                while((s[i]=='0'))
+                {
+                    count2++;
+                    i++;
+                }
+                if(s[i]=='1') count1++;
+                countNum.push_back(count2);
+            }
+        }
+      
+        for(int i=0;i<(countNum.size());i++)
+        {
+            if(countNum[i]!=0)
+            ans+=((a*countNum[i])+b);
+        }
+        ans+=((a*count1)+b);
+    }
+    else 
+    {
+        
+        ans=((a+b)*n);  
+
+      
+    }
+    cout<<ans<<endl;
+      
 }
+
+
 int main()
 {
+ fast_cin();
+ ll t;
+ cin >> t;
+ while(t--) {
  prasad();
+ }
  return 0;
 }

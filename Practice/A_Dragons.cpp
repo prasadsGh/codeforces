@@ -79,32 +79,38 @@ double eps = 1e-12;
  
 
 void prasad(){
+ll s, n;
+ll a=0,b=0;
+cin>>s>>n;
+int flag=0;
+vector<pair<ll,ll>>v;
 
-    ll n;
-    cin>>n;
-    int t=n;
-   if(n==1) cout<<"1\n";
-   else 
-   {
-        
-        int j=0;
-        int k=0;
-        int sum=1;
-        int result=0;
-      for(int i=0;i<t;i++)
-      {
-       
-        sum+=(j);
-         j++;
-       result+=sum;
+for(int i=0;i<n;i++)
+  {
+    cin>>a>>b;
+    v.push_back(make_pair(a,b));
+  }
+  sort(v.begin(),v.end());
 
-      }
-      cout<<result<<endl;
-    
-   }
+for(auto i=v.begin();i!=v.end();i++)
+{
+    if((i->first)>=s)
+    {
+        flag=1;
+        break;
+    }
+    else{
+        s+=(i->second);
+    }
+}
+if(flag==0) cout<<"YES\n";
+else cout<<"NO\n";
+
+ 
+
+ 
 }
 int main()
-{
- prasad();
+{prasad();
  return 0;
 }
