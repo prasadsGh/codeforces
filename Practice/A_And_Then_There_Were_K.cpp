@@ -76,25 +76,27 @@ double eps = 1e-12;
 //this code belongs to prasad patil
 #define all(x) (x).begin(), (x).end()
 #define sz(x) ((ll)(x).size())
+
+ll setbit(ll n)
+{
+    n/=2;
+    ll cnt=0;
+    while(n!=0)
+    {
+        n/=2;
+        cnt++;
+    }
+    return cnt;
+}
  
 
 void prasad(){
     ll n;
     cin>>n;
-    ll cnt=0;
-    ll m=n;
-    ll arr[10]={0,1,11,111,1111,11111,111111,1111111,11111111,111111111};
-    while(m>0) 
-    {
-        cnt++;
-        m/=10;
-    }
-    ll div=arr[cnt];
-    ll ans=0;
-    ans+=((cnt-1)*9);
-    ans+=(n/div);
-    cout<<ans<<endl;
-
+    ll ans= (1<<setbit(n));
+    ll ans1=(ans-1);
+    cout<<ans1<<endl;
+   
 }
 int main()
 {
@@ -102,7 +104,6 @@ int main()
  ll t;
  cin >> t;
  while(t--) {
-
  prasad();
  }
  return 0;

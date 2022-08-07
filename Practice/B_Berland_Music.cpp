@@ -81,28 +81,63 @@ double eps = 1e-12;
 void prasad(){
     ll n;
     cin>>n;
-    ll cnt=0;
-    ll m=n;
-    ll arr[10]={0,1,11,111,1111,11111,111111,1111111,11111111,111111111};
-    while(m>0) 
+    
+    vector<ll> v;
+    for(int i=0;i<n;i++)
     {
-        cnt++;
-        m/=10;
+        ll m;
+        cin>>m;
+      v.push_back(m);
     }
-    ll div=arr[cnt];
-    ll ans=0;
-    ans+=((cnt-1)*9);
-    ans+=(n/div);
-    cout<<ans<<endl;
+    string s;
+    cin>>s;
+    int cnt=0;
+    
+    // for(int i=0;i<n;i++)
+    // {
+    //     if(s[i]=='0') cnt++;
+    // }
+    vector<ll> v2;
+    v2=v;
+    sort(v2.begin(),v2.end());
+   
+    // for(int i=0;i<n;i++)
+    // {
+    //     if(s[i]=='0') v[i]=-1;
+    //     else v[i]=-2;
+    // }
+    int j=0;
+    for(int i=0;i<n;i++)
+    {
+        if(s[i]=='0')
+        {
+            v[i]=v2[j];
 
-}
+            j++;
+        }
+    }
+  
+    for(int i=0;i<n;i++)
+    {
+        if(s[i]=='1')
+        {
+            v[i]=v2[j];
+            j++;
+        }
+
+    }
+    for(ll x:v) cout<<x<<" ";
+    cout<<endl;
+    
+
+    }
+
 int main()
 {
  fast_cin();
  ll t;
  cin >> t;
  while(t--) {
-
  prasad();
  }
  return 0;

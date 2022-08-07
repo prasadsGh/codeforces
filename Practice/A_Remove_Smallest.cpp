@@ -81,20 +81,23 @@ double eps = 1e-12;
 void prasad(){
     ll n;
     cin>>n;
-    ll cnt=0;
-    ll m=n;
-    ll arr[10]={0,1,11,111,1111,11111,111111,1111111,11111111,111111111};
-    while(m>0) 
+    ll arr[n];
+    for(ll i=0;i<n;i++)
     {
-        cnt++;
-        m/=10;
+        cin>>arr[i];
     }
-    ll div=arr[cnt];
-    ll ans=0;
-    ans+=((cnt-1)*9);
-    ans+=(n/div);
-    cout<<ans<<endl;
-
+    sort(arr,arr+n);
+    int flag=0;
+    for(int i=0;i<(n-1);i++)
+    {
+        if((arr[i+1]-arr[i])>1) 
+        {
+            flag=1;
+            break;
+        }
+    }
+    if(flag==0) cout<<"YES\n";
+    else cout<<"NO\n";
 }
 int main()
 {
@@ -102,7 +105,6 @@ int main()
  ll t;
  cin >> t;
  while(t--) {
-
  prasad();
  }
  return 0;

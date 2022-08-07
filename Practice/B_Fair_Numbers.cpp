@@ -74,27 +74,44 @@ double eps = 1e-12;
 #define INF 2e18
 #define fast_cin() ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
 //this code belongs to prasad patil
+// this guy belongs to padhye education institute akola 
+//10nth -->94.80
+//12th-->77.09
+//cet-->99.14
+//last sem -->cgpa-->9.64
+
+
 #define all(x) (x).begin(), (x).end()
 #define sz(x) ((ll)(x).size())
  
 
 void prasad(){
-    ll n;
-    cin>>n;
-    ll cnt=0;
-    ll m=n;
-    ll arr[10]={0,1,11,111,1111,11111,111111,1111111,11111111,111111111};
-    while(m>0) 
+    string s;
+    cin>>s;
+    ll m=stoll(s);
+    sort(s.begin(),s.end());
+    ll a= stoll(s);
+   
+    ll prod=1;
+    while(a>0)
     {
-        cnt++;
-        m/=10;
+        if(((a%10)!=0) && ((prod%(a%10))!=0))
+        {
+            prod*=(a%10);
+        }
+        a/=10;
     }
-    ll div=arr[cnt];
-    ll ans=0;
-    ans+=((cnt-1)*9);
-    ans+=(n/div);
-    cout<<ans<<endl;
-
+    cout<<prod<<endl;
+    // ll res=(prod-(m%prod));
+    // ll ans=0;
+    // if((m%prod)!=0)
+    // {
+    //     ans=(m+res);
+    // }
+    // else{
+    //     ans=m;
+    // }
+    // cout<<ans<<endl;
 }
 int main()
 {
@@ -102,7 +119,6 @@ int main()
  ll t;
  cin >> t;
  while(t--) {
-
  prasad();
  }
  return 0;
