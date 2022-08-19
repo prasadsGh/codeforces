@@ -79,40 +79,32 @@ double eps = 1e-12;
  
 
 void prasad(){
-    ll n;
-    cin>>n;
-    vector<int>v1;
-     vector<int>v2;
-      vector<int>v3;
+    ll n,k;
+    cin>>n>>k;
+   vector<ll> v1,v2;
     for(int i=0;i<n;i++)
     {
-        int m;
-        cin>>m;
-        if((m%2)==0)
-        v1.push_back(m);
-        else 
-        {
-            v2.push_back(m); 
-        }
+       int m;
+       cin>>m;
+       v1.push_back(m);
     }
-    for(int i=0;i<(v1.size());i++)
-        v3.push_back(v1[i]);
-    for(int i=0;i<(v2.size());i++)
+    v2=v1;
+    sort(v2.begin(),v2.end());
+    vector<ll> v;
+    for(int i=0;i<k;i++)
+    v.push_back(v2[i]);
+    ll m=v.size();
+
+    ll count=0;
+    for(int i=(k);i<n;i++)
     {
-        v3.push_back(v2[i]);
-    }
-   
-    int count=0;
-    for(int i=0;i<n;i++)
-    {
-        
-        for(int j=(i+1);j<n;j++)
+        for(int j=0;j<m;j++ )
         {
-           if((__gcd(v3[i],(v3[j]*2)))>1)
-           count++;
+            if(v1[i]==v[j]) count++;
         }
     }
     cout<<count<<endl;
+
 }
 int main()
 {

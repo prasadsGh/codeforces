@@ -43,7 +43,7 @@ void prasad(){
     string s;
     cin>>s;
     int n=s.length();
-    int low=0,high=n-1;
+    int low=-1,high=-1;
     for(int i=0;i<n;i++)
     {
         if(s[i]=='1')
@@ -61,10 +61,11 @@ void prasad(){
         }
     }
     int count=0;
-    if(n==1 or (low==(0) && high==(n-1))) 
+    if(n==1 or (high==low)) 
     {
         cout<<"0\n";
     }
+    else if((low==-1) && (high==-1))cout<<"0"<<endl;
     else 
     {
           for(int i=low;i<=high;i++)

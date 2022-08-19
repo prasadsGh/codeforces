@@ -79,40 +79,46 @@ double eps = 1e-12;
  
 
 void prasad(){
-    ll n;
-    cin>>n;
-    vector<int>v1;
-     vector<int>v2;
-      vector<int>v3;
-    for(int i=0;i<n;i++)
+    string a,b;
+    cin>>a>>b;
+    if(a<b)
     {
-        int m;
-        cin>>m;
-        if((m%2)==0)
-        v1.push_back(m);
-        else 
+        string temp=a;
+        a=b;
+        b=a;
+    }
+    int n=a.length();
+    int m=b.length();
+    int flag=0;
+    int flag1=0;
+    if((n%m)==0)
+    {
+        for(int i=0;i<n;i++)
         {
-            v2.push_back(m); 
+            int j=0;
+            for(int j=0;j<m;j++)
+            {
+                if(a[i]!=b[j])
+                {
+                    flag=1;
+                    flag1=1;
+                    break;
+                }
+                i++;
+            }
+            if(flag1=1) break;
+        }
+        if(flag==1) cout<<"-1\n";
+        else{
+            ll lcm1=((a*b)/(__gcd(a,b)));
+            ll k1=(lcm/m);
+            while(k1--)
+            {
+                cout<<b;
+            }
         }
     }
-    for(int i=0;i<(v1.size());i++)
-        v3.push_back(v1[i]);
-    for(int i=0;i<(v2.size());i++)
-    {
-        v3.push_back(v2[i]);
-    }
-   
-    int count=0;
-    for(int i=0;i<n;i++)
-    {
-        
-        for(int j=(i+1);j<n;j++)
-        {
-           if((__gcd(v3[i],(v3[j]*2)))>1)
-           count++;
-        }
-    }
-    cout<<count<<endl;
+    else cout<<"-1\n";
 }
 int main()
 {

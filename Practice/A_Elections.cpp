@@ -79,40 +79,40 @@ double eps = 1e-12;
  
 
 void prasad(){
-    ll n;
-    cin>>n;
-    vector<int>v1;
-     vector<int>v2;
-      vector<int>v3;
-    for(int i=0;i<n;i++)
+    ll a,b,c;
+    cin>>a>>b>>c;
+    int temp= max(a,max(b,c));
+    int count=0;
+    if(a==temp) count++;
+    if(b==temp) count++;
+    if(c==temp) count++;
+    if(count==1)
     {
-        int m;
-        cin>>m;
-        if((m%2)==0)
-        v1.push_back(m);
-        else 
-        {
-            v2.push_back(m); 
-        }
+        ll temp=max(a,max(b,c));
+    if((temp-a)>0) cout<<(temp-a+1)<<" ";
+    else cout<< "0 ";
+    if((temp-b)>0) cout<<(temp-b+1)<<" ";
+    else cout<< "0 ";
+    if((temp-c)>0) cout<<(temp-c+1)<<" ";
+    else cout<< "0 ";
+    cout<<endl;
     }
-    for(int i=0;i<(v1.size());i++)
-        v3.push_back(v1[i]);
-    for(int i=0;i<(v2.size());i++)
+    else if(count==2)
     {
-        v3.push_back(v2[i]);
+        if((temp-a)==0) cout<<1<<" ";
+        else cout<<(temp-a+1)<<" ";
+        if((temp-b)==0) cout<<1<<" ";
+        else cout<<(temp-b+1)<<" ";
+        if((temp-c)==0) cout<<1<<" ";
+        else cout<<(temp-c+1)<<" ";
+        cout<<endl;
+    
+    }
+    else if(count==3)
+    {
+        cout<<1<<" "<<1<<" "<<1<<endl;
     }
    
-    int count=0;
-    for(int i=0;i<n;i++)
-    {
-        
-        for(int j=(i+1);j<n;j++)
-        {
-           if((__gcd(v3[i],(v3[j]*2)))>1)
-           count++;
-        }
-    }
-    cout<<count<<endl;
 }
 int main()
 {

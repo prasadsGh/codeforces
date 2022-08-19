@@ -81,46 +81,25 @@ double eps = 1e-12;
 void prasad(){
     ll n;
     cin>>n;
-    vector<int>v1;
-     vector<int>v2;
-      vector<int>v3;
+    ll arr1[n];
+    ll arr2[n];
     for(int i=0;i<n;i++)
     {
-        int m;
-        cin>>m;
-        if((m%2)==0)
-        v1.push_back(m);
-        else 
+        cin>>arr1[i];
+        cin>>arr2[i];
+    }
+    ll cnt=0;
+    for(int i=0;i<n;i++){
+        for(int j=0;j<n;j++)
         {
-            v2.push_back(m); 
+            if(arr1[i]==arr2[j]) cnt++;
         }
     }
-    for(int i=0;i<(v1.size());i++)
-        v3.push_back(v1[i]);
-    for(int i=0;i<(v2.size());i++)
-    {
-        v3.push_back(v2[i]);
-    }
-   
-    int count=0;
-    for(int i=0;i<n;i++)
-    {
-        
-        for(int j=(i+1);j<n;j++)
-        {
-           if((__gcd(v3[i],(v3[j]*2)))>1)
-           count++;
-        }
-    }
-    cout<<count<<endl;
+    cout<<cnt<<endl;
+    
 }
 int main()
 {
- fast_cin();
- ll t;
- cin >> t;
- while(t--) {
  prasad();
- }
  return 0;
 }
