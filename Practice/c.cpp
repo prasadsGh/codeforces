@@ -1,7 +1,7 @@
-//this code belongs to prasad patil
+//this code belongs to shreya
 #pragma GCC optimize("Ofast")
 #pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,avx2,fma")
-//this code belongs to prasad patil
+//this code belongs to shreya
 #pragma GCC optimize("unroll-loops")
 #include <bits/stdc++.h> 
  
@@ -19,7 +19,7 @@ typedef vector<vector<ll> > vv64;
 typedef vector<vector<p64> > vvp64;
 typedef vector<p64> vp64;
 typedef vector<p32> vp32;
-//this code belongs to prasad patil
+//this code belongs to shreya
 ll MOD = 998244353;
 double eps = 1e-12;
 #define forn(i,e) for(ll i = 0; i < e; i++)
@@ -34,29 +34,43 @@ double eps = 1e-12;
 #define se second
 #define INF 2e18
 #define fast_cin() ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
-//this code belongs to prasad patil
+//this code belongs to shreya
 #define all(x) (x).begin(), (x).end()
 #define sz(x) ((ll)(x).size())
  
 
-void prasad(){
-    ll n,m,k;
-    cin>>n>>m>>k;
-    int arr[n];
-    for(int i=0;i<n;i++)
-    {
-    cin>>arr[i];
+void solve()
+{
+    //this is a default output ,you can change it
+    int result=0;
+    map<int,int> mp;
+    for(int i=0;i<(N);i++)
+    {   
+        for(int j=0;j<2;j++)
+        {
+            mp[A[i]]++;
+            mp[A[j]]++;
+        }
     }
-    sort(arr,arr+n);
-    reverse(arr,arr+n);
-    ll temp= ((arr[0]*k)+arr[1]);
-    ll temp1=(m%(k+1));
-    ll temp2=(m/(k+1));
-    ll ans=((temp2*temp)+(temp1*arr[0]));
-    cout<<ans<<endl;
+    int z=m.size();
+    int k=(z-1);
+    
+    result=(n-k+1);
+    //WRITE YOUR LOGIC HERE 
+
+    
 }
+ 
 int main()
 {
-prasad();
+     fast_cin();
+     ll t;
+     cin >> t;
+ 
+     while(t--)
+     {
+         solve();
+     }
+ 
  return 0;
 }

@@ -74,43 +74,54 @@ double eps = 1e-12;
 #define INF 2e18
 #define fast_cin() ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
 //this code belongs to prasad patil
-// this guy belongs to padhye education institute akola 
-//10nth -->94.80
-//12th-->77.09
-//cet-->99.14
-//last sem -->cgpa-->9.64
-
-
 #define all(x) (x).begin(), (x).end()
 #define sz(x) ((ll)(x).size())
-bool isright(ll n)
-{
-    ll temp=n;
-    while(temp>0)
-    {
-        ll temp1=(temp%10);
-        if (temp1!=0)
-        {
-           if((n%temp1)!=0) return false;
-
-        }
-        
-        temp/=10;
-    }
-    return true;
-}
  
 
 void prasad(){
-    ll n;
-    cin>>n;
-    while(!isright(n))
+    ll h,a,k,e;
+    cin>>h>>a>>k>>e;
+    ll temp=max(max(h,a),max(k,e));
+    if(temp==h)
     {
-        n++;
+         cout<<"Hussien ";
+         ll temp=max(a,max(k,e));
+           if(a==temp) cout<<"Atef ";
+    else if(k==temp) cout<<"Karemo ";
+    else cout<<"Ezzat ";
+    cout<<endl;
+    }
+    else if(a==temp)
+    {
+        cout<<"Atef ";
+        ll temp=max(h,max(k,e));
+         if(temp==h)cout<<"Hussien ";
+         else if(k==temp) cout<<"Karemo ";
+         else cout<<"Ezzat ";
+         cout<<endl;
+    } 
+    else if(k==temp) 
+    {
+        cout<<"Karemo ";
+        ll temp=max(h,max(a,e));
+        if(temp==h)cout<<"Hussien ";
+        else if(a==temp) cout<<"Atef ";
+         else cout<<"Ezzat ";
+         cout<<endl;
+    }
+
+    else 
+    {
+        cout<<"Ezzat ";
+        ll temp=max(a,max(h,k));
+        if(a==temp) cout<<"Atef ";
+        else if(temp==h)cout<<"Hussien ";
+        else if(k==temp) cout<<"Karemo ";
+        cout<<endl;
+
 
     }
-    cout<<n<<endl;
-    
+
 }
 int main()
 {

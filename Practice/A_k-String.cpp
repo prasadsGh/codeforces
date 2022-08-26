@@ -83,62 +83,68 @@ void prasad(){
     cin>>n;
     string s;
     cin>>s;
-    vector<int> arr(26,-1);
-    int m=s.length();
-    vector<int> v;
+    ll m=s.length();
+    vector<int> check(26,0);
     for(int i=0;i<m;i++)
     {
-        arr[int(s[i])-97]++;
+      check[int(s[i])-97]++;
     }
-   v=arr;
-   sort(v.begin(),v.end());
-   ll min_val=0;
-   for(int i=0;i<26;i++)
-   {
-    if((v[i]!=-1))
+    // for(int i:check) cout<<i<<" ";
+    // cout<<endl;
+    int flag=0;
+    ll temp=0;
+    for(int i=0;i<26;i++)
     {
-        min_val=arr[i];
-        break;
-    } 
-   }
-   int flag=0;
-   
-   for(int i=0;i<26;i++)
-   {
-    if(((v[i]%n)!=0) && (v[i]!=-1) )  
-    {
-        flag=1;
-        break;
-    }
-   }
-   if(((flag==1))) cout<<"-1\n"; 
-   else
-   {
-      for(int i=0;i<26;i++)
+      if(check[i]!=0)
       {
-        if(arr[i]!=-1){
-
-            ll k=(arr[i]/n);
-         while(k--)
-         {
-            
-           cout<<char(i+97);
-         }
+        temp=check[i];
+        break;
       }
 
-        }
+    }
+    // cout<<temp<<endl;
+    ll count=0;
+    vector<char>v;
+    for(int i=0;i<26;i++)
+    {
+      if((temp!=check[i]) && (check[i]!=0)&& (((temp%check[i])!=0) or (check[i]%temp)!=0))
+      {
+        flag=1;
+        break;
+      }
+      if(check[i]!=0)
+      {
+        count++;
+        char a=char(i+97);
         
-   }
+        v.push_back(a);
+      }
+     
+     
+    }
+    // string ans="";
+    if(flag==1) cout<<"-1"<<endl;
+    else
+    {
+      while(temp--)
+      {
+        for(char x:v)
+        {
+          cout<<x;
+
+        }
+      }
+  
+    }
+    
+  
+
+
   
 
 }
 int main()
 {
- fast_cin();
- ll t;
- cin >> t;
- while(t--) {
- prasad();
- }
+prasad();
  return 0;
 }

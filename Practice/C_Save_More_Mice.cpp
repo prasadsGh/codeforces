@@ -80,27 +80,42 @@ double eps = 1e-12;
 
 void prasad(){
     ll n,k;
-    cin>>n>k;
-    vector<ll> arr(k);
+    cin>>n>>k;
+    vector<ll> arr;
     
     for(int i=0;i<k;i++)
     {
         int m;
         cin>>m;
-        arr[i]=k;
+       arr.push_back(m);
     }
     sort(arr.begin(),arr.end());
-    reverse(arr.begin(),arr.end());
-    
-    int pos=0;
-    ll j=(n-1);
-    ll count=0;
-    while(j>pos)
+//    reverse(arr.begin(),arr.end());
+    ll dis=0;
+    ll diff=0;
+    ll i=(k-1);
+    ll flag=0;
+    while(dis<arr[i])
     {
-        pos+=(n-arr[j]);
-        count++;
+        diff=(n-arr[i]);
+        dis+=(diff); 
+        arr[i]=-1;
+        if(i==0)
+        {
+            flag=1;
+            break;
+        }
+        i--;
     }
-    cout<<count<<endl;
+    ll count=0;
+    for(int x:arr)
+    {
+        if(x==-1) count++;
+    }
+    if(flag==0) cout<<count<<endl;
+    else cout<<k<<endl;
+
+
 }
 int main()
 {

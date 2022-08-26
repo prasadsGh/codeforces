@@ -74,43 +74,58 @@ double eps = 1e-12;
 #define INF 2e18
 #define fast_cin() ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
 //this code belongs to prasad patil
-// this guy belongs to padhye education institute akola 
-//10nth -->94.80
-//12th-->77.09
-//cet-->99.14
-//last sem -->cgpa-->9.64
-
-
 #define all(x) (x).begin(), (x).end()
 #define sz(x) ((ll)(x).size())
-bool isright(ll n)
-{
-    ll temp=n;
-    while(temp>0)
-    {
-        ll temp1=(temp%10);
-        if (temp1!=0)
-        {
-           if((n%temp1)!=0) return false;
-
-        }
-        
-        temp/=10;
-    }
-    return true;
-}
+ 
  
 
 void prasad(){
+    
     ll n;
     cin>>n;
-    while(!isright(n))
+    vector<ll> memo;
+  
+    ll sum=0;
+    ll h=1;
+    while(sum<n)
     {
-        n++;
+        ll ans=((h*2)+(h-1));
+        sum+=ans;
+        memo.push_back(sum);
+        h++;
+    }
+    ll ans=0;
+    ll count=0;
+  
+    ll cnt=0;
+    // for(auto i:memo) cout<<i<<" ";
+    ll temp=0;
+    if(n<2) cnt=0;
+    else
+    {
+        while(n>0)
+    {
+        auto lower= upper_bound(memo.begin(),memo.end(),n);
+        // lower--;
+        if(lower!=memo.begin())
+        temp=(lower-memo.begin()-1);
+        else 
+        {
+            temp=(lower-memo.begin()-1+1);
+        }
+        // cout<<memo[temp]<<" ";
+        n-=memo[temp];
+       
+        cnt++;
+         if(n<2)break;
 
     }
-    cout<<n<<endl;
+  
+
+    }
+      cout<<cnt<<endl;
     
+  
 }
 int main()
 {

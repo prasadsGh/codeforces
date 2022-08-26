@@ -74,28 +74,18 @@ double eps = 1e-12;
 #define INF 2e18
 #define fast_cin() ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
 //this code belongs to prasad patil
-// this guy belongs to padhye education institute akola 
-//10nth -->94.80
-//12th-->77.09
-//cet-->99.14
-//last sem -->cgpa-->9.64
-
-
 #define all(x) (x).begin(), (x).end()
 #define sz(x) ((ll)(x).size())
-bool isright(ll n)
-{
-    ll temp=n;
-    while(temp>0)
-    {
-        ll temp1=(temp%10);
-        if (temp1!=0)
-        {
-           if((n%temp1)!=0) return false;
 
-        }
-        
-        temp/=10;
+bool isprime(ll n)
+{
+    if(n==2) return true;
+    if(n==3) return true;
+    if(n==5) return true;
+    if((n%2)==0 or (n%3)==0 or (n%5)==0) return false;
+    for(int i=5;(i*i)<=n;i+=6)
+    {
+        if((n%i)==0 or (n%(i+2))==0) return false;
     }
     return true;
 }
@@ -104,13 +94,64 @@ bool isright(ll n)
 void prasad(){
     ll n;
     cin>>n;
-    while(!isright(n))
+    ll count=0;
+   
+    ll temp=sqrt(n);
+    ll temp1=(temp*temp);
+    if(n==1)
     {
-        n++;
-
+        cout<<"NO\n";
     }
-    cout<<n<<endl;
+    else if(temp1!=n)
+    {
+        cout<<"NO\n";
+        return;
+    }
+    else
+    {
+        if(isprime(temp)) 
+        {
+            cout<<"YES\n";
+            return;
+        }
+        else
+        {
+            cout<<"NO\n";
+            return ;
+        }
+    }
+    // cout<<temp<<endl;
+    // if(isprime(temp))
+    // {
+    //     cout<<"YES\n";
+    //     return ;
+    // }
+    // else
+    // {
+    //     cout<<"NO\n";
+    //     cout<<endl;
+    // }
+    // // for(int i=2;(i*i)<=n;i++)
+    // {
+    //     if((n%i)==0)
+    //     {   
+
+    //        if(isprime(i)&& (i==(n/i)))
+    //        {
+    //         cout<<"YES\n";
+    //         return ;
+    //        }
+    //        else 
+    //        {
+    //         cout<<"NO\n";
+    //         return;
+            
+    //        }
+
+    //     }
+    // }
     
+
 }
 int main()
 {

@@ -74,51 +74,43 @@ double eps = 1e-12;
 #define INF 2e18
 #define fast_cin() ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
 //this code belongs to prasad patil
-// this guy belongs to padhye education institute akola 
-//10nth -->94.80
-//12th-->77.09
-//cet-->99.14
-//last sem -->cgpa-->9.64
-
-
 #define all(x) (x).begin(), (x).end()
 #define sz(x) ((ll)(x).size())
-bool isright(ll n)
-{
-    ll temp=n;
-    while(temp>0)
-    {
-        ll temp1=(temp%10);
-        if (temp1!=0)
-        {
-           if((n%temp1)!=0) return false;
-
-        }
-        
-        temp/=10;
-    }
-    return true;
-}
  
 
 void prasad(){
-    ll n;
-    cin>>n;
-    while(!isright(n))
+    ll n,t;
+    cin>>n>>t;
+    ll arr[n];
+    n--;
+    vector<int>v;
+   
+    for(int i=1;i<=n;i++)
     {
-        n++;
-
+        cin>>arr[i];
     }
-    cout<<n<<endl;
     
+     ll temp=0;
+     int flag=0;
+    for(int i=1;i<=n;i=temp)
+    {
+        
+        temp=((i)+arr[i]);
+        if(t==temp)
+        {
+            flag=1;
+            break;
+        }
+       
+        if(i>n)break;
+        
+    }
+    // if(arr[1]==t) flag=1;
+    if(flag) cout<<"YES\n";
+    else cout<<"NO\n";
 }
 int main()
 {
- fast_cin();
- ll t;
- cin >> t;
- while(t--) {
- prasad();
- }
+prasad();
  return 0;
 }

@@ -1,3 +1,4 @@
+
 //this code belongs to prasad patil
 #pragma GCC optimize("Ofast")
 #pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,avx2,fma")
@@ -74,43 +75,43 @@ double eps = 1e-12;
 #define INF 2e18
 #define fast_cin() ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
 //this code belongs to prasad patil
-// this guy belongs to padhye education institute akola 
-//10nth -->94.80
-//12th-->77.09
-//cet-->99.14
-//last sem -->cgpa-->9.64
-
-
 #define all(x) (x).begin(), (x).end()
 #define sz(x) ((ll)(x).size())
-bool isright(ll n)
-{
-    ll temp=n;
-    while(temp>0)
-    {
-        ll temp1=(temp%10);
-        if (temp1!=0)
-        {
-           if((n%temp1)!=0) return false;
-
-        }
-        
-        temp/=10;
-    }
-    return true;
-}
  
 
 void prasad(){
     ll n;
     cin>>n;
-    while(!isright(n))
-    {
-        n++;
-
+    ll arr[n];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
     }
-    cout<<n<<endl;
-    
+   
+    vector<int> v;
+    vector<int>v1;
+   vector<int>v2(n,0);
+//    v.push_back(v[0];)
+   for(int i=0;i<n;i++)
+   {
+    if(arr[i]<=arr[0]) 
+    {
+        v.push_back(arr[i]);
+        v2[i]=1;
+    } 
+    if(arr[i]==1) break;
+   }
+   for(int i=0;i<n;i++)
+   {
+      if(v2[i]==0)
+      {
+        v1.push_back(arr[i]);
+      }
+   }
+   reverse(v.begin(),v.end());
+   for(int x:v) cout<<x<<" ";
+   for(int i:v1) cout<<i<<" ";
+   cout<<endl;
+
 }
 int main()
 {

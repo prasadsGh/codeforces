@@ -44,8 +44,10 @@ void prasad(){
     cin>>s;
     int n=s.length();
     int low=-1,high=-1;
+    int flag=0;
     for(int i=0;i<n;i++)
     {
+        if(s[i]=='0') flag=1;
         if(s[i]=='1')
         {
             low=i;
@@ -60,8 +62,10 @@ void prasad(){
             break;
         }
     }
+    // cout<<low<<" "<<high<<endl;
     int count=0;
-    if(n==1 or (high==low)) 
+    
+    if((n==1 &&s[0]=='1') or (high==low) ) 
     {
         cout<<"0\n";
     }

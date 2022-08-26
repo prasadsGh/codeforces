@@ -74,43 +74,80 @@ double eps = 1e-12;
 #define INF 2e18
 #define fast_cin() ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
 //this code belongs to prasad patil
-// this guy belongs to padhye education institute akola 
-//10nth -->94.80
-//12th-->77.09
-//cet-->99.14
-//last sem -->cgpa-->9.64
-
-
 #define all(x) (x).begin(), (x).end()
 #define sz(x) ((ll)(x).size())
-bool isright(ll n)
-{
-    ll temp=n;
-    while(temp>0)
-    {
-        ll temp1=(temp%10);
-        if (temp1!=0)
-        {
-           if((n%temp1)!=0) return false;
-
-        }
-        
-        temp/=10;
-    }
-    return true;
-}
  
 
 void prasad(){
     ll n;
     cin>>n;
-    while(!isright(n))
+    string s;
+    cin>>s;
+    ll cnt=0;
+    ll cnt1=0;
+    ll cnt2=0;
+    for(int i=(n-1);i>=0;i--)
     {
-        n++;
+        if(s[i]=='0')
+         cnt++;
+        // if(s[i]=='1') break;
 
     }
-    cout<<n<<endl;
+    ll flag=0;
+   for(int i=0;i<(n-1);i++)
+   {
+       if(s[i]>s[i+1])
+       {
+        flag=1;
+        break;
+       }
+   }
+
+    for(int i=(n-1);i>=0;i--)
+    {
+       
+        if(s[i]=='1') cnt1++;
+        
+
+    }
+    ll res=(2*min(cnt,cnt1));
+    if(flag==0) cout<<"0\n";
+    else if(cnt==0) cout<<"0\n";
+    else if(cnt1==0) cout<<"0\n";
+    else
+    {
+        cout<<"1\n";
+       cout<<res<<" ";
+       ll temp=(res/2);
+       for(int i=0;(temp!=0) ;i++)
+       {
+        if(s[i]=='1')
+        {
+            cout<<i+1<<" ";
+            temp--;   
+        }
+        
+      }
+      temp=(res/2);
+      vector<int>v;
+      for(int i=(n-1);(temp!=0) ;i--)
+       {
+        if(s[i]=='0')
+        {
+            v.push_back(i+1);
+            temp--;   
+        }
+        
+      }
+      ll n=v.size();
+      reverse(v.begin(),v.end());
+      for(int i=0;i<n;i++) cout<<v[i]<<" ";
+      cout<<endl;
+
+    }
     
+
+
 }
 int main()
 {
