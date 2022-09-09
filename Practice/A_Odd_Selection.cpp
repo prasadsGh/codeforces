@@ -79,72 +79,82 @@ double eps = 1e-12;
  
 
 void prasad(){
-    ll n,a,b;
-    cin>>n>>a>>b;
-    string s;
-    cin>>s;
+    ll n,x;
+    cin>>n>>x;
+    ll count=0,count1=0;
+    vector<ll>v;
+    for(int i=0;i<n;i++)
+    {
+        ll k;
+        cin>>k;
+        v.push_back(k);
+        if((k%2)==0) count++;
+        else count1++;
+    }
+    // cout<<count<<" "<<count1<<endl;
+    if((count1==0))
+    {
+        cout<<"No\n";
+        return;
+    }
+    if(count==0)
+    {
+        if((count1>=x))
+        {
+            if((x%2)==1)
+            {
+                cout<<"Yes\n";
+                return ;
+            }
+            else if((x%2)==0)
+            {
+                cout<<"No\n";
+                return;
+            }
+        }
+        else if((count1<x))
+        {
+            cout<<"No\n";
+            return ;
+        }
+    }
+    if((count==x)&&(count1!=0))
+    {
+        cout<<"Yes\n";
+        return;
+    }
+    else if((count==x)&&(count1==0))
+    {
+        cout<<"No\n";
+        return;
+    }
+    if(count1>x && ((x%2)!=0))
+    {
+        cout<<"Yes\n";
+        return ;
+    }
+
+    if((count1%2)==1)
+    {
+        if(((count1+count)>=x))
+        {
+            cout<<"Yes\n";
+            return ;
+        }
+    }
+    else if(((count1%2)==0))
+    {
+        if(((count1+count-1)>=x))
+        {
+            cout<<"Yes\n";
+            return ;
+        }
+    }
+    cout<<"No\n";
     
-    ll ans=0;
-    vector<int> countNum;
-    if(a>b)
-    {
-  
-        ll count1=0;
-        ll count2=0;
-        if(s[0]=='0')
-        { 
-            for(int i=0;i<(n);i++)
-            {
-                count2=0;
-                
-              while((s[i]=='1'))
-              {
-                count2++;
-                i++;
-                
-              }
-              if(s[i]=='0') count1++;
-              countNum.push_back(count2);
-            }
-
-        }
-        else 
-        {
-           
-        
-            for(int i=0;i<(n);i++)
-            {
-                count2=0;
-                
-                while((s[i]=='0'))
-                {
-                    count2++;
-                    i++;
-                }
-                if(s[i]=='1') count1++;
-                countNum.push_back(count2);
-            }
-        }
-      
-        for(int i=0;i<(countNum.size());i++)
-        {
-            if(countNum[i]!=0)
-            ans+=((a*countNum[i])+b);
-        }
-        ans+=((a*count1)+b);
-    }
-    else 
-    {
-        
-        ans=((a+b)*n);  
-
-      
-    }
-    cout<<ans<<endl;
-      
+   
+    
 }
-
-
 int main()
 {
  fast_cin();

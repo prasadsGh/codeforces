@@ -76,24 +76,73 @@ double eps = 1e-12;
 //this code belongs to prasad patil
 #define all(x) (x).begin(), (x).end()
 #define sz(x) ((ll)(x).size())
+
  
 
 void prasad(){
-    ll n,m;
-    cin>>n>>m;
-    ll k=(n/2);
-    for(int i=k;i<=n;i++)
+    ll n;
+    cin>>n;
+vector<ll>v;
+ for(int i=0;i<n;i++)
+  {
+    int m;cin>>m;
+    v.push_back(m);
+  }
+
+ ll ans=0;
+ ll cnt=1;
+ if(n==1) cout<<1<<endl;
+ else
+ {   
+    for(int i=1;i<n;i++)
     {
-        if((i%m)==0 && ((i*2)>=n)) 
-        {
-            cout<<i<<endl;
-            return;
-        }
+        if(v[i]<=v[i-1]) cnt++;
+        else break;
+
     }
-    cout<<"-1"<<endl;
+    ans=max(ans,cnt);
+    cnt=1;
+    for(int i=(n-2);i>=0;i--)
+    {
+        if(v[i]<=v[i+1]) cnt++;
+        else break;
+    }
+     ans=max(ans,cnt);
+    for(int i=0;i<(n);i++)
+    {
+        ll k=i,l=i;
+        cnt=1;
+       
+        while(k--)
+        {
+             
+            if(k<0 or (v[k]>v[k+1])) break;
+            if(v[k]<=v[k+1]) cnt++;
+            
+           
+
+        }
+        while(l++)
+        {
+            if((l>=n) or (v[l]>v[l-1])) break;
+            if(v[l]<=v[l-1]) cnt++;
+
+           
+        }
+        ans=max(ans,cnt);
+        // cout<<cnt<<" ";
+
+    }
+    // cout<<endl;
+    cout<<ans<<endl;
+
+ }
+    
+
+
 }
 int main()
 {
-prasad();
+ prasad();
  return 0;
 }

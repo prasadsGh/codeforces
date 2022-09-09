@@ -76,24 +76,33 @@ double eps = 1e-12;
 //this code belongs to prasad patil
 #define all(x) (x).begin(), (x).end()
 #define sz(x) ((ll)(x).size())
+
  
 
 void prasad(){
-    ll n,m;
-    cin>>n>>m;
-    ll k=(n/2);
-    for(int i=k;i<=n;i++)
-    {
-        if((i%m)==0 && ((i*2)>=n)) 
-        {
-            cout<<i<<endl;
-            return;
-        }
-    }
-    cout<<"-1"<<endl;
+    ll n;
+cin>>n;
+vector<ll> memo;
+ ll count=0;
+    
+    count=(n+((n/2)*2)+((n/3)*2));
+
+
+// for(auto i:memo) cout<<i<<" ";
+// cout<<endl;
+cout<<count<<endl;
+
+
+
 }
 int main()
 {
-prasad();
+ fast_cin();
+ ll t;
+ 
+ cin >> t;
+ while(t--) {
+ prasad();
+ }
  return 0;
 }

@@ -78,22 +78,16 @@ double eps = 1e-12;
 #define sz(x) ((ll)(x).size())
  
 
-void prasad(){
-    ll n,m;
-    cin>>n>>m;
-    ll k=(n/2);
-    for(int i=k;i<=n;i++)
-    {
-        if((i%m)==0 && ((i*2)>=n)) 
-        {
-            cout<<i<<endl;
-            return;
-        }
-    }
-    cout<<"-1"<<endl;
+void prasad(ll n){
+    if(n==0) return;
+    cout<<"I love Recursion\n";
+    prasad(n-1);
+    
 }
 int main()
 {
-prasad();
+    ll n;
+    cin>>n;
+ prasad(n);
  return 0;
 }

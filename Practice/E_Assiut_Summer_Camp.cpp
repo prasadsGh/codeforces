@@ -81,47 +81,27 @@ double eps = 1e-12;
 void prasad(){
     ll h,a,k,e;
     cin>>h>>a>>k>>e;
-    ll temp=max(max(h,a),max(k,e));
-    if(temp==h)
-    {
-         cout<<"Hussien ";
-         ll temp=max(a,max(k,e));
-           if(a==temp) cout<<"Atef ";
-    else if(k==temp) cout<<"Karemo ";
-    else cout<<"Ezzat ";
-    cout<<endl;
-    }
-    else if(a==temp)
-    {
-        cout<<"Atef ";
-        ll temp=max(h,max(k,e));
-         if(temp==h)cout<<"Hussien ";
-         else if(k==temp) cout<<"Karemo ";
-         else cout<<"Ezzat ";
-         cout<<endl;
-    } 
-    else if(k==temp) 
-    {
-        cout<<"Karemo ";
-        ll temp=max(h,max(a,e));
-        if(temp==h)cout<<"Hussien ";
-        else if(a==temp) cout<<"Atef ";
-         else cout<<"Ezzat ";
-         cout<<endl;
-    }
+    map<int,string> mp;
+    for(int i=0;i<4;i++)
+    mp[h]="Hussien";
+    mp[a]="Atef";
+    mp[k]="Karemo";
+    mp[e]="Ezzat";
+    int count=0;
+    
+     vector<ll>v;
+     v.push_back(h);
+     v.push_back(a);
+     v.push_back(k);
+     v.push_back(e);
+     sort(v.begin(),v.end());
+     reverse(v.begin(),v.end());
+     cout<<mp.at(v[0])<<" "<<mp.at(v[1])<<endl;
 
-    else 
-    {
-        cout<<"Ezzat ";
-        ll temp=max(a,max(h,k));
-        if(a==temp) cout<<"Atef ";
-        else if(temp==h)cout<<"Hussien ";
-        else if(k==temp) cout<<"Karemo ";
-        cout<<endl;
+    
 
 
-    }
-
+    
 }
 int main()
 {

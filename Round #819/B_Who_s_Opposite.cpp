@@ -79,21 +79,26 @@ double eps = 1e-12;
  
 
 void prasad(){
-    ll n,m;
-    cin>>n>>m;
-    ll k=(n/2);
-    for(int i=k;i<=n;i++)
-    {
-        if((i%m)==0 && ((i*2)>=n)) 
-        {
-            cout<<i<<endl;
-            return;
-        }
+    ll a,b,c;
+    cin>>a>>b>>c;
+    ll diff1=abs(a-b);
+    ll diff=(2*diff1);
+
+    if((a>diff) or(b>diff) or(c>diff)) cout<<"-1\n";
+    else{
+        ll ans=(c+diff1);
+        if(ans>diff) ans-=diff;
+        cout<<ans<<endl;
+
     }
-    cout<<"-1"<<endl;
 }
 int main()
 {
-prasad();
+ fast_cin();
+ ll t;
+ cin >> t;
+ while(t--) {
+ prasad();
+ }
  return 0;
 }

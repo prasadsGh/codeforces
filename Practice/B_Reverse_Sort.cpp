@@ -83,18 +83,10 @@ void prasad(){
     cin>>n;
     string s;
     cin>>s;
-    ll cnt=0;
-    ll cnt1=0;
-    ll cnt2=0;
-    for(int i=(n-1);i>=0;i--)
-    {
-        if(s[i]=='0')
-         cnt++;
-        // if(s[i]=='1') break;
-
-    }
-    ll flag=0;
-   for(int i=0;i<(n-1);i++)
+    v64 v;
+    int i=0,j=n-1;
+    int flag=0;
+    for(int i=0;i<(n-1);i++)
    {
        if(s[i]>s[i+1])
        {
@@ -103,51 +95,42 @@ void prasad(){
        }
    }
 
-    for(int i=(n-1);i>=0;i--)
+    while (i<j)
     {
-       
-        if(s[i]=='1') cnt1++;
+        
+        while (i<j and s[i]=='0')
+        {
+            i++;
+        }
+
+        while (i<j and s[j]=='1')
+        {
+            j--;
+        }
+        if(i>=j){
+            break;
+        }
+        v.pb(i);
+        v.pb(j);
+        i++;
+        j--;
+        
         
 
     }
-    ll res=(2*min(cnt,cnt1));
-    if(flag==0) cout<<"0\n";
-    else if(cnt==0) cout<<"0\n";
-    else if(cnt1==0) cout<<"0\n";
-    else
+    if(flag==0)
     {
-        cout<<"1\n";
-       cout<<res<<" ";
-       ll temp=(res/2);
-       for(int i=0;(temp!=0) ;i++)
-       {
-        if(s[i]=='1')
-        {
-            cout<<i+1<<" ";
-            temp--;   
-        }
-        
-      }
-      temp=(res/2);
-      vector<int>v;
-      for(int i=(n-1);(temp!=0) ;i--)
-       {
-        if(s[i]=='0')
-        {
-            v.push_back(i+1);
-            temp--;   
-        }
-        
-      }
-      ll n=v.size();
-      reverse(v.begin(),v.end());
-      for(int i=0;i<n;i++) cout<<v[i]<<" ";
-      cout<<endl;
-
+        cout<<"0"<<endl;
+        return;
     }
+    sort(all(v));
+    cout<<1<<endl;
+    cout<<v.size()<<" ";
+    for(int i=0;i<v.size();i++){
+        cout<<v[i]+1<<" ";
+    }
+    cout<<ln;
     
-
-
 }
 int main()
 {

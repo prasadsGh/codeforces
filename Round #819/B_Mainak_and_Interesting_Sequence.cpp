@@ -79,21 +79,45 @@ double eps = 1e-12;
  
 
 void prasad(){
-    ll n,m;
-    cin>>n>>m;
-    ll k=(n/2);
-    for(int i=k;i<=n;i++)
+    ll n,sum;
+    cin>>n>>sum;
+    if(n>sum) cout<<"No\n";
+    else if(((n%2)==0)&&((sum%2)==1)) cout<<"No\n";
+    
+    else if(((n%2)==0)&&((sum%2)==0))
     {
-        if((i%m)==0 && ((i*2)>=n)) 
+        cout<<"Yes\n";
+
+        cout<<((sum-(n-2)))/2<<" "<<((sum-(n-2)))/2<<" ";
+        n-=2;
+        while(n--)
         {
-            cout<<i<<endl;
-            return;
+            cout<<"1"<<" ";
         }
+        cout<<endl;
     }
-    cout<<"-1"<<endl;
+    else if((n%2)==1)
+    {
+        cout<<"Yes\n";
+
+        cout<<sum-(n-1)<< " ";
+        n-=1;
+        while(n--)
+        {
+            cout<<"1"<<" ";
+        }
+        cout<<endl;
+
+
+    }
 }
 int main()
 {
-prasad();
+ fast_cin();
+ ll t;
+ cin >> t;
+ while(t--) {
+ prasad();
+ }
  return 0;
 }

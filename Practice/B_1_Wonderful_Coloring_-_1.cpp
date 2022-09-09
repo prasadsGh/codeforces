@@ -79,21 +79,42 @@ double eps = 1e-12;
  
 
 void prasad(){
-    ll n,m;
-    cin>>n>>m;
-    ll k=(n/2);
-    for(int i=k;i<=n;i++)
+    string s;
+    cin>>s;
+    ll n=s.length();
+     map<char,ll>mp;
+    if(n==1)
     {
-        if((i%m)==0 && ((i*2)>=n)) 
-        {
-            cout<<i<<endl;
-            return;
-        }
+        cout<<"0\n";
+        return ;
     }
-    cout<<"-1"<<endl;
+    else
+    {
+        for(int i=0;i<n;i++)
+        {
+            mp[s[i]]++;
+        }
+        ll ans=0;
+        ll count=0;
+        for(auto i:mp)
+         {
+            if((i.second)!=1)
+            ans+=((i.second)/2);
+            else if((i.second)==1)
+            count++;
+         }
+         ans+=((count/2));
+         cout<<ans<<endl;
+    }
+
 }
 int main()
 {
-prasad();
+ fast_cin();
+ ll t;
+ cin >> t;
+ while(t--) {
+ prasad();
+ }
  return 0;
 }
