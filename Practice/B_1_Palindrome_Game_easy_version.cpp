@@ -10,39 +10,39 @@ using namespace std;
 // function to get the product of very ver large number
 string multiply(string num1, string num2)
 {
-  int len1 = num1.size();
-  int len2 = num2.size();
-  if (len1 == 0 || len2 == 0)
-    return "0";
-  vector<int> result(len1 + len2, 0);
-  int i_n1 = 0;
-  int i_n2 = 0;
-  for (int i = len1 - 1; i >= 0; i--)
-  {
-    int carry = 0;
-    int n1 = num1[i] - '0';
-    i_n2 = 0;
-    for (int j = len2 - 1; j >= 0; j--)
+    int len1 = num1.size();
+    int len2 = num2.size();
+    if (len1 == 0 || len2 == 0)
+        return "0";
+    vector<int> result(len1 + len2, 0);
+    int i_n1 = 0;
+    int i_n2 = 0;
+    for (int i = len1 - 1; i >= 0; i--)
     {
-      int n2 = num2[j] - '0';
-      int sum = n1 * n2 + result[i_n1 + i_n2] + carry;
-      carry = sum / 10;
-      result[i_n1 + i_n2] = sum % 10;
-      i_n2++;
+        int carry = 0;
+        int n1 = num1[i] - '0';
+        i_n2 = 0;
+        for (int j = len2 - 1; j >= 0; j--)
+        {
+            int n2 = num2[j] - '0';
+            int sum = n1 * n2 + result[i_n1 + i_n2] + carry;
+            carry = sum / 10;
+            result[i_n1 + i_n2] = sum % 10;
+            i_n2++;
+        }
+        if (carry > 0)
+            result[i_n1 + i_n2] += carry;
+        i_n1++;
     }
-    if (carry > 0)
-      result[i_n1 + i_n2] += carry;
-    i_n1++;
-  }
-  int i = result.size() - 1;
-  while (i >= 0 && result[i] == 0)
-    i--;
-  if (i == -1)
-    return "0";
-  string s = "";
-  while (i >= 0)
-    s += std::to_string(result[i--]);
-  return s;
+    int i = result.size() - 1;
+    while (i >= 0 && result[i] == 0)
+        i--;
+    if (i == -1)
+        return "0";
+    string s = "";
+    while (i >= 0)
+        s += std::to_string(result[i--]);
+    return s;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -72,58 +72,39 @@ double eps = 1e-12;
 #define fi first
 #define se second
 #define INF 2e18
-#define fast_cin()                  \
-  ios_base::sync_with_stdio(false); \
-  cin.tie(NULL);                    \
-  cout.tie(NULL)
+#define fast_cin()                    \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL);                    \
+    cout.tie(NULL)
 // this code belongs to prasad patil
 #define all(x) (x).begin(), (x).end()
 #define sz(x) ((ll)(x).size())
 
 void prasad()
 {
-  ll n;
-  cin >> n;
-  string s;
-  cin >> s;
-  map<char, ll> mp;
-  ll k = s.length();
-  for (int i = 0; i < k; i++)
-  {
-    mp[s[i]]++;
-  }
-  int flag = 0;
-  for (auto i : mp)
-  {
-    if ((i.second % n) != 0)
+    ll n;
+    cin >> n;
+    string s;
+    cin >> s;
+    ll cnt = 0;
+    for (int i = 0; i < n; i++)
     {
-      flag = 1;
-      break;
+        if (s[i] == '0')
+            cnt++;
     }
-  }
-  if (flag)
-  {
-    cout << -1 << endl;
-    return;
-  }
-  else
-  {
-    ll ap=n;
-    while (ap--)
-    {
-      for (auto i : mp)
-      {
-        ll a = ((i.second)/n);
-        while (a--)
-        {
-          cout << i.first;
-        }
-      }
-    }
-  }
+    if((cnt==0)) cout<<"DRAW\n";
+    else if((cnt==1)&& s[0]=='0') cout<<"BOB\n";
+    else if((cnt%2)==0 or cnt==1) cout<<"BOB\n";
+    else cout<<"ALICE\n";
 }
 int main()
 {
-  prasad();
-  return 0;
+    fast_cin();
+    ll t;
+    cin >> t;
+    while (t--)
+    {
+        prasad();
+    }
+    return 0;
 }
