@@ -79,56 +79,61 @@ double eps = 1e-12;
  
 
 void prasad(){
-    ll n,k,x;
-    cin>>n>>k>>x;
-    ll arr[n];
-    vector<ll>v1;
-    for(int i=0;i<n;i++)
+    string s,c;
+    cin>>s>>c;
+    ll h1=((int(s[0])-48)*10)+int(s[1]-48);
+    ll m1=((int(s[3])-48)*10)+int(s[4]-48);
+    ll h2=((int(c[0])-48)*10)+int(c[1]-48);
+    ll m2=((int(c[3])-48)*10)+int(c[4]-48);
+    ll a=0,b=0;
+    // cout<<m2<<endl;
+    if((m2>=m1)) 
     {
-        cin>>arr[i];
-    }
-    sort(arr,arr+n);
-    ll count=0;
-    for(int i=0;i<n-1;i++)
-    {
-        ll d=arr[i+1]-arr[i];
-        if(d>x) 
+        b=(m2-m1);
+        a=(h2-h1);
+        if(a<0)
         {
-            count++;
-             v1.push_back(d);
+            a+=24;
         }
-       
     }
-    // sort(v1.begin(),v1.end());
-    // reverse(v1.begin(),v1.end());
-     //no of subarrays
-    // auto lk=upper_bound(v1.begin(),v1.end(),x)-v1.begin();
-    sort(all(v1));
-    
-    for(int i=0;i<v1.size() && k>0;i++)
+    else
     {
-       
-            ll abc=(v1[i]/x);
-            if((v1[i]%x)==0) 
-            {
-                k-=((v1[i]/x)-1);
-                
-                if((abc-1)>0 && k>=0) count--;
-               
-            }
-            else 
-            {
-                k-=((v1[i]/x));
-               
-                if(abc>0 && k>=0) count--;
-              
-            }
-            // if(k<=0) break;
-         
-        
+        h2--;
+        b=(60-m1+m2);
+        a=(h2-h1);
+        if(a<0) a+=24;
     }
+    ll temp=((a*60)+b);
+    // cout<<a<<" "<<b<<endl;
+    temp/=2;
+    ll ans1=0,ans2=0;
+    if((m1+temp)>=60)
+    {
+        ans1+=((m1+temp)/60);
+        ans2=((m1+temp)%60);
+        ans1+=h1;
+        if(ans1>=24)  ans1=(24-ans1);
+        if(ans1>=10)
+        cout<<ans1<<":";
+        else if(ans1<10) cout<<"0"<<ans1<<":";
+        if(ans2>=10) cout<<ans2<<endl;
+        else if(ans2<10) cout<<"0"<<ans2<<endl;
+    }
+    else
+    {
+        ans1=h1;
+        ans2=(m1+temp);
+        if(ans1>=24) ans1=(24-ans1);
+        if(ans1>=10)
+        cout<<ans1<<":";
+        else if(ans1<10) cout<<"0"<<ans1<<":";
+        if(ans2>=10) cout<<ans2<<endl;
+        else if(ans2<10) cout<<"0"<<ans2<<endl;
+
+    }
+
     
-    cout<<count+1<<endl;
+    
 }
 int main()
 {

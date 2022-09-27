@@ -79,59 +79,52 @@ double eps = 1e-12;
  
 
 void prasad(){
-    ll n,k,x;
-    cin>>n>>k>>x;
+    ll n;
+    cin>>n;
     ll arr[n];
-    vector<ll>v1;
     for(int i=0;i<n;i++)
     {
         cin>>arr[i];
     }
-    sort(arr,arr+n);
-    ll count=0;
-    for(int i=0;i<n-1;i++)
+    ll count =0;
+    ll min1=INT_MAX;
+    vector<ll>v;
+    for(int i=0;i<n;i++)
     {
-        ll d=arr[i+1]-arr[i];
-        if(d>x) 
+        if(arr[i]<=0) 
         {
+            v.push_back(arr[i]);
             count++;
-             v1.push_back(d);
         }
-       
     }
-    // sort(v1.begin(),v1.end());
-    // reverse(v1.begin(),v1.end());
-     //no of subarrays
-    // auto lk=upper_bound(v1.begin(),v1.end(),x)-v1.begin();
-    sort(all(v1));
-    
-    for(int i=0;i<v1.size() && k>0;i++)
+    ll kp=v.size();
+    sort(all(v));
+    for(int i=0;i+1<kp;i++)
     {
-       
-            ll abc=(v1[i]/x);
-            if((v1[i]%x)==0) 
-            {
-                k-=((v1[i]/x)-1);
-                
-                if((abc-1)>0 && k>=0) count--;
-               
-            }
-            else 
-            {
-                k-=((v1[i]/x));
-               
-                if(abc>0 && k>=0) count--;
-              
-            }
-            // if(k<=0) break;
-         
-        
+        min1=min(min1,abs(v[i+1]-v[i]));
     }
-    
-    cout<<count+1<<endl;
+    for(int i=0;i<n;i++)
+    {
+        if(arr[i]>0) 
+        {
+            if(arr[i]<=min1)
+            {
+                count++;
+                break;
+            }
+        }
+    }
+    cout<<count<<endl;
+
+
 }
 int main()
 {
-prasad();
+ fast_cin();
+ ll t;
+ cin >> t;
+ while(t--) {
+ prasad();
+ }
  return 0;
 }

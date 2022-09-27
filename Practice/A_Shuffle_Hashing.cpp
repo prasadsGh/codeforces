@@ -79,59 +79,47 @@ double eps = 1e-12;
  
 
 void prasad(){
-    ll n,k,x;
-    cin>>n>>k>>x;
-    ll arr[n];
-    vector<ll>v1;
+    string a,b;
+    cin>>a>>b;
+    ll sum=0,sum1=0;
+    ll n=a.length();
+    map<char,ll>mp;
+    
     for(int i=0;i<n;i++)
     {
-        cin>>arr[i];
+      mp[a[i]]++;
     }
-    sort(arr,arr+n);
-    ll count=0;
-    for(int i=0;i<n-1;i++)
+    ll m=b.length();
+
+    int i=0;
+    int j=n;
+   while(j<=m)
     {
-        ll d=arr[i+1]-arr[i];
-        if(d>x) 
+        map<char,ll>mp1;
+        for(int k=i;k<j;k++)
         {
-            count++;
-             v1.push_back(d);
+            mp1[b[k]]++;
         }
-       
-    }
-    // sort(v1.begin(),v1.end());
-    // reverse(v1.begin(),v1.end());
-     //no of subarrays
-    // auto lk=upper_bound(v1.begin(),v1.end(),x)-v1.begin();
-    sort(all(v1));
-    
-    for(int i=0;i<v1.size() && k>0;i++)
-    {
-       
-            ll abc=(v1[i]/x);
-            if((v1[i]%x)==0) 
-            {
-                k-=((v1[i]/x)-1);
-                
-                if((abc-1)>0 && k>=0) count--;
-               
-            }
-            else 
-            {
-                k-=((v1[i]/x));
-               
-                if(abc>0 && k>=0) count--;
-              
-            }
-            // if(k<=0) break;
-         
+        if(mp==mp1)
+        {
+            cout<<"YES\n";
+            return;
+        }
+        i++;
+        j++;
         
     }
-    
-    cout<<count+1<<endl;
+    cout<<"NO\n";
+
+
 }
 int main()
 {
-prasad();
+ fast_cin();
+ ll t;
+ cin >> t;
+ while(t--) {
+ prasad();
+ }
  return 0;
 }

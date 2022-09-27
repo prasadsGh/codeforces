@@ -1,0 +1,1 @@
+{"name":"Local: c","url":"/home/prasad/Desktop/just code/Codeforces/Practice/c.cpp","tests":[{"id":1663870859507,"input":"4\n2\n10\n4\n1001\n5\n11111\n7\n0010100","output":"10\n0011\n11111\n0000011"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/prasad/Desktop/just code/Codeforces/Practice/c.cpp","group":"local","local":true}
