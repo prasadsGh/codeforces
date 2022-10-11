@@ -6,8 +6,47 @@
 #include <bits/stdc++.h> 
  
 using namespace std;
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//function to get the product of very ver large number
+string multiply(string num1, string num2)
+{
+ int len1 = num1.size();
+int len2 = num2.size();
+if (len1 == 0 || len2 == 0)
+return "0";
+vector<int> result(len1 + len2, 0);
+int i_n1 = 0;
+int i_n2 = 0;
+ for (int i=len1-1; i>=0; i--)
+ {
+int carry = 0;
+int n1 = num1[i] - '0';
+i_n2 = 0;
+ for (int j=len2-1; j>=0; j--)
+ {
+int n2 = num2[j] - '0';
+int sum = n1*n2 + result[i_n1 + i_n2] + carry;
+carry = sum/10;
+result[i_n1 + i_n2] = sum % 10;
+i_n2++;
+}
+if (carry > 0)
+result[i_n1 + i_n2] += carry;
+i_n1++;
+}
+int i = result.size() - 1;
+while (i>=0 && result[i] == 0)
+i--;
+if (i == -1)
+return "0";
+string s = "";
+while (i >= 0)
+s += std::to_string(result[i--]);
+return s;
+}
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
  
-typedef long long int ll;
+typedef long long ll;
 typedef long double ld;
 typedef pair<int,int> p32;
 typedef pair<ll,ll> p64;
@@ -40,82 +79,15 @@ double eps = 1e-12;
  
 
 void prasad(){
-    int b,h;
-    cin>>b>>h;
-    ll ans=0;
-    /*-------------------------------------------*/
-    int x;
-    cin>>x;
-    int barr[x];
-    for(int i=0;i<x;i++)
-    {
-        cin>>barr[i];
-    }
-      ll d1=0;
-   d1=(barr[x-1]-barr[0]);
-   
-    /*-------------------------------------------*/
-     int x1;
-    cin>>x1;
-    int barr1[x1];
-    for(int i=0;i<x1;i++)
-    {
-        cin>>barr1[i];
-    }
-      ll d2=0;
-     d2=(barr1[x1-1]-barr1[0]);
+    ll n,k;
+    cin>>n>>k;
+    ll arr[n];
+    for(int i=0;i<n;i++) cin>>arr[i];
     
-    /*------------------------------------------*/
-  
-    int y;
-    cin>>y;
-    int harr[y];
-    for(int i=0;i<y;i++)
-    {
-        cin>>harr[i];
-    }
-     ll d3=0;
-    d3=(harr[y-1]-harr[0]);
-   
-    /*-----------------------------------------*/
-    int y1;
-    cin>>y1;
-    int harr1[y1];
-    for(int i=0;i<y1;i++)
-    {
-        
-        cin>>harr1[i];
-    }
-    ll d4=0;
-   d4=( harr1[y1-1]-harr1[0]);
     
-    /*---------------------------------------*/
-    ll res1=(d1*h);
-    ans=max(ans,res1);
-    ll res2=(d2*h);
-    ans=max(ans,res2);
-
-    ll res3=(d3*b);
-    ans=max(ans,res3);
-
-    ll res4=(d4*b);
-    ans=max(ans,res4);
-
-   cout<<ans<<endl;
-
-
-
-
-
-
 }
 int main()
 {
- fast_cin();
- ll t;
- cin >> t;
- while(t--) {
- prasad();
- }
+prasad();
  return 0;
 }

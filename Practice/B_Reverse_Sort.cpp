@@ -83,53 +83,54 @@ void prasad(){
     cin>>n;
     string s;
     cin>>s;
-    v64 v;
-    int i=0,j=n-1;
-    int flag=0;
-    for(int i=0;i<(n-1);i++)
-   {
-       if(s[i]>s[i+1])
-       {
-        flag=1;
-        break;
-       }
-   }
-
-    while (i<j)
+    vector<int> v;
+    ll count=0;
+    for(int i=(n-1);i>=0;i--)
     {
-        
-        while (i<j and s[i]=='0')
+        if(s[i]=='0' && s[i-1]=='1')
         {
-            i++;
-        }
+             count++;
+            //  v.push_back(i);
 
-        while (i<j and s[j]=='1')
-        {
-            j--;
         }
-        if(i>=j){
-            break;
-        }
-        v.pb(i);
-        v.pb(j);
-        i++;
-        j--;
-        
-        
-
     }
-    if(flag==0)
+    if(count==0) cout<<"0\n";
+    else
     {
-        cout<<"0"<<endl;
-        return;
+        cout<<"1"<<endl;
+        ll jk=0;
+          for(int i=(n-1);i>=0;i--)
+      {
+        if(s[i]=='0')
+        {
+           jk++;
+        }
+        else break;
+      }
+      ll jk1=0;
+          for(int i=(n-1);i>=0;i--)
+      {
+        if(s[i]=='1')
+        {
+           jk1++;
+        }
+        else break;
+      }
+       
+      
+        ll temp=count;
+       for(int i=(n-1);i>=0;i--)
+      {
+        if(s[i]=='0')
+        {
+            cout<<i<<" ";
+            temp--;
+            if(temp==0) break;
+        }
+      }
+      cout<<endl;
+        
     }
-    sort(all(v));
-    cout<<1<<endl;
-    cout<<v.size()<<" ";
-    for(int i=0;i<v.size();i++){
-        cout<<v[i]+1<<" ";
-    }
-    cout<<ln;
     
 }
 int main()

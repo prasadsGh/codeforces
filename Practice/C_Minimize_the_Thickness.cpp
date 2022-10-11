@@ -84,69 +84,29 @@ void prasad()
 {
     ll n;
     cin >> n;
-    string s;
-    cin >> s;
-    char arr[n][n];
+    ll arr[n];
+    for (int i = 0; i < n; i++)
+        cin >> arr[i];
+
+    ll sum = 0, sum1 = 0;
+    ll count = 0;
+    ll ans = 0;
     for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < n; j++)
+        sum += arr[i];
+        for (int j = (i + 1); j < n; j++)
         {
-            arr[i][j] = '=';
-            if (i == j)
-                arr[i][j] = 'X';
-        }
-    }
-    int count = 0;
-    int cnt = 0;
-    for (int i = 0; i < n; i++)
-    {
-        if (s[i] == '2')
-            cnt++;
-        else
+            sum1 += arr[j];
             count++;
-    }
-    if (cnt == 1 or cnt==2)
-    {
-        cout << "NO\n";
-        return;
-    }
-    int flag = 0;
-    if (cnt > 0)
-        flag = 1;
-
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < n; j++)
-        {
-
-            if (s[i] == '2')
+            if (sum == sum1)
             {
-                if (arr[i][j] != 'X' && arr[i][j] != '-' && s[j] != '1')
-                {
-                    arr[i][j] = '+';
-                    arr[j][i] = '-';
-                    break;
-                }
+                ans = max(ans, count);
+                count = 0;
             }
-           
         }
+        sum1 = 0;
     }
-
-    bool res = false;
-    if ((((n - 1) * cnt) % 2) == 1)
-    {
-        res = true;
-    }
-
-    cout << "YES\n";
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < n; j++)
-        {
-            cout << arr[i][j];
-        }
-        cout << endl;
-    }
+    cout<<ans<<endl;
 }
 int main()
 {

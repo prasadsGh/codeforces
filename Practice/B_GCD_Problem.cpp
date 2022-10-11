@@ -84,70 +84,29 @@ void prasad()
 {
     ll n;
     cin >> n;
-    string s;
-    cin >> s;
-    char arr[n][n];
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < n; j++)
+   
+        if ((n - 1) % 2)
         {
-            arr[i][j] = '=';
-            if (i == j)
-                arr[i][j] = 'X';
+            cout << (n / 2) << " " << ((n / 2) - 1) <<" "<<1<< endl;
         }
-    }
-    int count = 0;
-    int cnt = 0;
-    for (int i = 0; i < n; i++)
-    {
-        if (s[i] == '2')
-            cnt++;
         else
-            count++;
-    }
-    if (cnt == 1 or cnt==2)
-    {
-        cout << "NO\n";
-        return;
-    }
-    int flag = 0;
-    if (cnt > 0)
-        flag = 1;
-
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < n; j++)
         {
-
-            if (s[i] == '2')
+            // if(((n-4)%3)!=0)
+            // {
+            //     cout<<(n-4)<<" "<<3<<" "<<1<<endl;
+            // }
+            if((((n-1)/2)%2)==0)
             {
-                if (arr[i][j] != 'X' && arr[i][j] != '-' && s[j] != '1')
-                {
-                    arr[i][j] = '+';
-                    arr[j][i] = '-';
-                    break;
-                }
+                cout<<((n-1)/2)-1<<" "<<((n-1)/2)+1<<" "<<1<<endl;
             }
-           
+            else
+            {
+                cout<<((n-1)/2)-2<<" "<<((n-1)/2)+2<<" "<<1<<endl;
+
+            }
         }
     }
 
-    bool res = false;
-    if ((((n - 1) * cnt) % 2) == 1)
-    {
-        res = true;
-    }
-
-    cout << "YES\n";
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < n; j++)
-        {
-            cout << arr[i][j];
-        }
-        cout << endl;
-    }
-}
 int main()
 {
     fast_cin();

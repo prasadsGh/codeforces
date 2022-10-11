@@ -84,70 +84,95 @@ void prasad()
 {
     ll n;
     cin >> n;
-    string s;
-    cin >> s;
-    char arr[n][n];
+    vector<ll> v;
+    vector<ll> v1;
+    ll arr[n];
+    ll arr1[n];
     for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < n; j++)
-        {
-            arr[i][j] = '=';
-            if (i == j)
-                arr[i][j] = 'X';
-        }
+      cin>>arr[i];
     }
-    int count = 0;
-    int cnt = 0;
     for (int i = 0; i < n; i++)
     {
-        if (s[i] == '2')
-            cnt++;
-        else
-            count++;
+       cin>>arr1[i];
     }
-    if (cnt == 1 or cnt==2)
+    for(int i=0;i<n;i++)
     {
-        cout << "NO\n";
+        if(arr[i]==0) v.pb(arr1[i]);
+        else v1.pb(arr1[i]);
+    }
+    sort(all(v));
+    sort(all(v1));
+    reverse(all(v));
+    reverse(all(v1));
+    int i = 0;
+
+    ll ans = 0;
+    ll ab=min(v.size(),v1.size());
+    for(int i=0;i<ab;i++)
+    {
+        ans+=(2*v1[i]);
+        ans+=(2*v[i]);
+    }
+    if(v.size()==v1.size())
+    {
+        ans-=min(v[ab-1],v1[ab-1]);
+
+        cout<<ans<<endl;
         return;
     }
-    int flag = 0;
-    if (cnt > 0)
-        flag = 1;
-
-    for (int i = 0; i < n; i++)
+    if(ab<v.size())
     {
-        for (int j = 0; j < n; j++)
+        for(int i=ab;i<v.size();i++)
         {
-
-            if (s[i] == '2')
-            {
-                if (arr[i][j] != 'X' && arr[i][j] != '-' && s[j] != '1')
-                {
-                    arr[i][j] = '+';
-                    arr[j][i] = '-';
-                    break;
-                }
-            }
-           
+            ans+=v[i];
         }
-    }
+        cout<<ans<<endl;
 
-    bool res = false;
-    if ((((n - 1) * cnt) % 2) == 1)
-    {
-        res = true;
     }
-
-    cout << "YES\n";
-    for (int i = 0; i < n; i++)
+    if(ab<v1.size())
     {
-        for (int j = 0; j < n; j++)
+        for(int i=ab;i<v1.size();i++)
         {
-            cout << arr[i][j];
+            ans+=v1[i];
         }
-        cout << endl;
+        cout<<ans<<endl;
+        return ;
     }
+    // if (v.size() <= v1.size())
+    // {
+    //     while (i < v.size())
+    //     {
+    //         ans += (2 * (v[i]));
+    //         ans += (2 * (v1[i]));
+    //         i++;
+    //     }
+    //     for (int j = i; j < v1.size(); i++)
+    //     {
+    //         ans += (v1[i]);
+    //     }
+    //     cout << ans << endl;
+    //     return;
+    // }
+    // i = 0;
+
+    // if (v1.size() < v.size())
+    // {
+    //     while (i < v1.size())
+    //     {
+    //         ans += (2 * (v[i]));
+    //         ans += (2 * (v1[i]));
+    //         i++;
+    //     }
+    //     for (int j = i; j < v.size(); i++)
+    //     {
+    //         ans += (v1[i]);
+    //     }
+    //     cout << ans << endl;
+    //     return;
+    // }
 }
+
 int main()
 {
     fast_cin();

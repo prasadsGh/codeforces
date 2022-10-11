@@ -82,70 +82,58 @@ double eps = 1e-12;
 
 void prasad()
 {
-    ll n;
-    cin >> n;
     string s;
     cin >> s;
-    char arr[n][n];
+    ll n = s.length();
+    ll count_0 = 0, count_1 = 0, count_qu = 0;
     for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < n; j++)
-        {
-            arr[i][j] = '=';
-            if (i == j)
-                arr[i][j] = 'X';
-        }
+        if (s[i] == '0')
+            count_0++;
+        else if (s[i] == '1')
+            count_1++;
+        else if (s[i] == '?')
+            count_qu++;
     }
-    int count = 0;
-    int cnt = 0;
-    for (int i = 0; i < n; i++)
+    if (s[0] == '0')
     {
-        if (s[i] == '2')
-            cnt++;
-        else
-            count++;
-    }
-    if (cnt == 1 or cnt==2)
-    {
-        cout << "NO\n";
+        cout << 1 << endl;
         return;
     }
-    int flag = 0;
-    if (cnt > 0)
-        flag = 1;
-
-    for (int i = 0; i < n; i++)
+    else if (count_0 == n)
     {
-        for (int j = 0; j < n; j++)
+        cout << 1 << endl;
+        return;
+    }
+    else if (count_qu == n)
+    {
+        cout << n << endl;
+        return;
+    }
+    else if (count_1 == n)
+    {
+        cout << 1 << endl;
+        return;
+    }
+    else
+    {
+        reverse(s.begin(), s.end());
+        int count = 0;
+        ll temp = 0;
+        for (int i = 0; i < n; i++)
         {
-
-            if (s[i] == '2')
+            if (s[i] == '0')
             {
-                if (arr[i][j] != 'X' && arr[i][j] != '-' && s[j] != '1')
-                {
-                    arr[i][j] = '+';
-                    arr[j][i] = '-';
-                    break;
-                }
+                temp = i;
+              
             }
-           
         }
-    }
-
-    bool res = false;
-    if ((((n - 1) * cnt) % 2) == 1)
-    {
-        res = true;
-    }
-
-    cout << "YES\n";
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < n; j++)
+        for(int i=temp;i<n;i++)
         {
-            cout << arr[i][j];
+            count++;
+            if(s[i]=='1') break;
         }
-        cout << endl;
+        cout<<count<<endl;
     }
 }
 int main()

@@ -79,26 +79,32 @@ double eps = 1e-12;
  
 
 void prasad(){
-     ll n;
-     cin>>n;
-     ll arr[n];
-     for(int i=0;i<n;i++)
+    ll a,b,c;
+    cin>>a>>b>>c;
+    //for a
+    ll temp1=(b-(c-b));
+    if((temp1%a)==0 && temp1!=0 && (temp1>=a))
+    {
+        cout<<"YES\n";
+        return;
+    }
+    // for c
+    ll temp2=(a+(2*(b-a)));
+    if((temp2%c)==0 && (temp2!=0)&& (temp2>=c))
+    {
+        cout<<"YES\n";
+        return;
+    }
+    //for b
+   ll temp=(a+((c-a)/2));
+   if((temp>=b)&& ((c-a)%2)==0 && (temp!=0) && (temp%b)==0)
      {
-        cin>>arr[i];
+       cout<<"YES\n";
+       return;
      }
-     sort(arr,arr+n);
-     int count=0;
-     count=(n/2);
-     for(int i=1;i<n;i++)
-     {
-        if((arr[i]!=arr[i-1]) && (arr[0]!=arr[i]))
-        {
-            cout<<arr[0]<<" "<<arr[i]<<endl;
-            count--;
-        }
-        if(count==0) break;
-        
-     }
+
+ cout<<"NO\n";
+    
 }
 int main()
 {

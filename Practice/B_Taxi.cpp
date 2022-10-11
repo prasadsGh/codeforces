@@ -79,34 +79,69 @@ double eps = 1e-12;
  
 
 void prasad(){
-     ll n;
-     cin>>n;
-     ll arr[n];
-     for(int i=0;i<n;i++)
-     {
+    ll n;
+    cin>>n;
+    ll arr[n];
+    ll count_1=0, count_2=0, count_3=0,count_4=0;
+    for(int i=0;i<n;i++)
+    {
         cin>>arr[i];
-     }
-     sort(arr,arr+n);
-     int count=0;
-     count=(n/2);
-     for(int i=1;i<n;i++)
-     {
-        if((arr[i]!=arr[i-1]) && (arr[0]!=arr[i]))
-        {
-            cout<<arr[0]<<" "<<arr[i]<<endl;
-            count--;
-        }
-        if(count==0) break;
-        
-     }
+        if(arr[i]==1) count_1++;
+        else if(arr[i]==2) count_2++;
+        else if(arr[i]==3) count_3++;
+        else if(arr[i]==4) count_4++;
+    }
+   
+    ll count=0;
+    ll a=0,b=0;
+    count+=min(count_1,count_3);
+    a=count_1;
+    b=count_3;
+    count_1-=min(a,b);
+    count_3-=min(a,b);
+    count+=((count_2)/2);
+    count_2-=(2*((count_2)/2));
+    if(count_1>=2 && count_2==1)
+    {
+      
+        count+=1;
+        count_1-=2;
+        count_2--;
+    }
+    if(count_1>=2 && count_3>=1)
+    {
+        ll temp=(count_1/2);
+        a=temp;
+        b=count_3;
+        count+=min(temp,count_3);
+
+        count_1-=(2*min(a,b));
+        count_3-=(min(a,b));
+    }
+    count+=count_4;
+    
+    a=count_1;
+    b=count_2;
+
+    count+=min(count_1,count_2);
+    count_1-=min(a,b);
+    count_2-=min(a,b);
+    a=count_1;
+    b=count_3;
+    count+=min(a,b);
+    count_1-=min(a,b);
+    count_3-=min(a,b);
+     double a1= (count_1/4.0);
+     double b1= (count_2/2.0);
+     double c1=(count_3);
+    count+=(ceil(a1));
+    count+=(ceil(b1));
+    count+=ceil(c1);
+    cout<<count<<endl;
+    
 }
 int main()
 {
- fast_cin();
- ll t;
- cin >> t;
- while(t--) {
  prasad();
- }
  return 0;
 }

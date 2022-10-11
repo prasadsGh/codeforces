@@ -79,26 +79,45 @@ double eps = 1e-12;
  
 
 void prasad(){
-     ll n;
-     cin>>n;
-     ll arr[n];
-     for(int i=0;i<n;i++)
-     {
-        cin>>arr[i];
-     }
-     sort(arr,arr+n);
-     int count=0;
-     count=(n/2);
-     for(int i=1;i<n;i++)
-     {
-        if((arr[i]!=arr[i-1]) && (arr[0]!=arr[i]))
-        {
-            cout<<arr[0]<<" "<<arr[i]<<endl;
-            count--;
-        }
-        if(count==0) break;
-        
-     }
+    string a,b;
+    cin>>a>>b;
+    ll s1=0,s2=0,m1=0,m2=0,x1=0,x2=0,l1=0,l2=0;
+    ll n=a.length(), m=b.length();
+    for(int i=0;i<n;i++)
+    {
+        if(a[i]=='S') s1++;
+        else if(a[i]=='M') m1++;
+        else if(a[i]=='L')l1++;
+        else x1++;
+    }
+    for(int i=0;i<m;i++)
+    {
+        if(b[i]=='S') s2++;
+        else if(b[i]=='M') m2++;
+        else if(b[i]=='L')l2++;
+        else x2++;
+    }
+    if(l1==1 && l2!=1) cout<<">"<<endl;
+    else if(l2==1 && l1!=1) cout<<"<"<<endl;
+    else if(l2==l1 && l1!=0)
+    {
+        if(x1>x2) cout<<">\n";
+        else if(x1<x2) cout<<"<\n";
+        else cout<<"=\n";
+    }
+    else if(m1==1 && m2!=1) cout<<">"<<endl;
+    else if(m2==1 && m1!=1) cout<<"<"<<endl;
+    else if(m2==m1 && m1!=0) cout<<"="<<endl;
+    
+    else if(s1==1 && s2!=1) cout<<">"<<endl;
+    else if(s2==1 && s1!=1) cout<<"<"<<endl;
+    else if(s2==s1 && s1!=0)
+    {
+        if(x1>x2) cout<<"<\n";
+        else if(x1<x2) cout<<">\n";
+        else cout<<"=\n";
+    }
+    
 }
 int main()
 {

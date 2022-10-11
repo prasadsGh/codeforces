@@ -86,67 +86,96 @@ void prasad()
     cin >> n;
     string s;
     cin >> s;
-    char arr[n][n];
+    ll c = 0, d = 0;
     for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < n; j++)
-        {
-            arr[i][j] = '=';
-            if (i == j)
-                arr[i][j] = 'X';
-        }
-    }
-    int count = 0;
-    int cnt = 0;
-    for (int i = 0; i < n; i++)
-    {
-        if (s[i] == '2')
-            cnt++;
+        if (s[i] == '0')
+            c++;
         else
-            count++;
+            d++;
     }
-    if (cnt == 1 or cnt==2)
+    c--;
+    d--;
+    deque<char> dq;
+    dq.push_back('1');
+    dq.push_back('0');
+    n -= 2;
+    if (c <= d)
     {
-        cout << "NO\n";
-        return;
-    }
-    int flag = 0;
-    if (cnt > 0)
-        flag = 1;
-
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < n; j++)
+        ll a = c;
+        while (c)
         {
+            dq.push_front('0');
+            dq.push_back('0');
+            c--;
+        }
+        ll temp = (d - a);
 
-            if (s[i] == '2')
+        if ((a % 2) == 0)
+        {
+            while (temp)
             {
-                if (arr[i][j] != 'X' && arr[i][j] != '-' && s[j] != '1')
-                {
-                    arr[i][j] = '+';
-                    arr[j][i] = '-';
+                dq.push_back('1');
+                temp--;
+                if (temp)
                     break;
-                }
+                dq.push_front('0');
+                temp--;
             }
-           
         }
-    }
-
-    bool res = false;
-    if ((((n - 1) * cnt) % 2) == 1)
-    {
-        res = true;
-    }
-
-    cout << "YES\n";
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < n; j++)
+        else
         {
-            cout << arr[i][j];
+
+            while (temp)
+            {
+                dq.push_front('1');
+                temp--;
+                if (temp)
+                    break;
+                dq.push_back('0');
+                temp--;
+            }
         }
-        cout << endl;
     }
+    else if (d < c)
+    {
+        ll a = d;
+        while (d)
+        {
+            dq.push_back('1');
+            dq.push_front('1');
+            d--;
+        }
+        ll temp = (c-a);
+
+        if ((a % 2) == 0)
+        {
+            while (temp)
+            {
+                dq.push_back('1');
+                temp--;
+                if (temp)
+                    break;
+                dq.push_front('0');
+                temp--;
+            }
+        }
+        else
+        {
+
+            while (temp)
+            {
+                dq.push_front('1');
+                temp--;
+                if (temp)
+                    break;
+                dq.push_back('0');
+                temp--;
+            }
+        }
+    }
+    for(auto i:dq) cout<<i;
+    cout<<endl;
 }
 int main()
 {

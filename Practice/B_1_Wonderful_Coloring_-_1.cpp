@@ -82,31 +82,24 @@ void prasad(){
     string s;
     cin>>s;
     ll n=s.length();
-     map<char,ll>mp;
-    if(n==1)
+    map<char,ll> mp;
+    for(int i=0;i<n;i++)
     {
-        cout<<"0\n";
-        return ;
+        mp[s[i]]++;
     }
-    else
+    ll ans=0;
+    ll count=0;
+    for(auto i:mp)
     {
-        for(int i=0;i<n;i++)
+        if((i.second)>1)
         {
-            mp[s[i]]++;
+            ans++;
         }
-        ll ans=0;
-        ll count=0;
-        for(auto i:mp)
-         {
-            if((i.second)!=1)
-            ans+=((i.second)/2);
-            else if((i.second)==1)
-            count++;
-         }
-         ans+=((count/2));
-         cout<<ans<<endl;
-    }
+        else count++;
 
+    }
+    ans+=(count/2);
+    cout<<ans<<endl;
 }
 int main()
 {
