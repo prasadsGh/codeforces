@@ -76,46 +76,24 @@ double eps = 1e-12;
 //this code belongs to prasad patil
 #define all(x) (x).begin(), (x).end()
 #define sz(x) ((ll)(x).size())
+ 
 
 void prasad(){
-    ll n;
-    cin>>n;
-    ll arr[n];
-    for(int i=0;i<n;i++)
-    {
-        cin>>arr[i];
-    }
-    vector<ll>pref_sum;
-    ll sum=0;
-    // pref_sum.pb(arr[0]);
-    for(int i=0;i<n-1;i++)
-    {
-        sum+=arr[i];
-        pref_sum.pb(sum);
-    }
-    for(auto i: pref_sum) cout<<i<<" ";
-    cout<<endl;  
-    ll ans=0;
-    ll temp=0;
-    for(int i=0;pref_sum.size();i++)
-    {
-        for(int j=(i+1);j<pref_sum.size();j++)
-        {
-            if((pref_sum[j]%pref_sum[i]==0))
-            {
-                
+    ll n,m;
+    cin>>n>>m;
+    int a[n],b[m];
+    for(int i=0;i<n;i++) cin>>a[i];
+    for(int i=0;i<m;i++) cin>>b[i];
+    ll max1= *max_element(a,a+n);
+    ll min1= *min_element(a,a+n);
+    ll min2= *min_element(b,b+m);
+    ll temp=max((2*min1),max1);
+    if(temp<min2) cout<<temp<<endl;
+    else cout<<-1<<endl;
 
-            }
-        }
-    }  
 }
 int main()
 {
- fast_cin();
- ll t;
- cin >> t;
- while(t--) {
- prasad();
- }
+prasad();
  return 0;
 }

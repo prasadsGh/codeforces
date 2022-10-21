@@ -80,48 +80,42 @@ double eps = 1e-12;
 #define all(x) (x).begin(), (x).end()
 #define sz(x) ((ll)(x).size())
 
+bool isgreat(ll n)
+{
+    ll sum = 0;
+    while (n)
+    {
+        sum += (n % 10);
+        n /= 10;
+    }
+    if(sum==10) return true;
+    else return false;
+}
+ll dp[10001]={-1};
+
 void prasad()
 {
-    //(-->opening brackett
-    //)--> closing brackett 
-    string a;
-    cin>>a;
-    ll n=a.length();
-    // stack<char>s;
-    if((n%2) or (a[0]==')') or a[n-1]=='(')
-    {
-        cout<<"NO\n";
-        return;
-    }
-    for(int i=0;i+1<n;i++)
-    {
-        if(a[i]=='?' and a[i+1]=='?')
-        {
-            a[i]='(';
-            a[i+1]=')';
-        }
-    }
-  ll count =0;
-  for(int i=0;i<n;i++)
-  {
-    if(a[i]=='?') count++;
-  }
-if(count%2) cout<<"NO\n";
-else cout<<"YES\n";
-
-}   
-
-
+    ll n;
+    cin >> n;
+    dp[0]=19;
     
+    int j=9;
+    for(int i=1;i<=n+1;i++)
+    {
 
+        while(!isgreat(dp[i-1]+j))
+        {
+            j+=9;
+        }
+        dp[i]=dp[i-1]+j;
+        j=9;
+    }
+    // for(int i=0;i<=n;i++) cout<<dp[i]<<" ";
+    // cout<<endl;
+    cout<<dp[n-1]<<endl;
+}
 int main()
 {
-    fast_cin();
-    ll t;
-    cin >> t;
-    while (t--)
-    {
-        prasad();
-    }
+    prasad();
     return 0;
 }

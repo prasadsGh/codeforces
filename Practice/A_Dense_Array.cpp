@@ -82,38 +82,31 @@ double eps = 1e-12;
 
 void prasad()
 {
-    //(-->opening brackett
-    //)--> closing brackett 
-    string a;
-    cin>>a;
-    ll n=a.length();
-    // stack<char>s;
-    if((n%2) or (a[0]==')') or a[n-1]=='(')
+    ll n;
+    cin >> n;
+    ll arr[n];
+    for (int i = 0; i < n; i++)
     {
-        cout<<"NO\n";
-        return;
+        cin >> arr[i];
     }
-    for(int i=0;i+1<n;i++)
+    ll count = 0;
+    for (int i = 0; i + 1 < n; i++)
     {
-        if(a[i]=='?' and a[i+1]=='?')
+        ll a = min(arr[i], arr[i + 1]);
+        ll b = max(arr[i], arr[i + 1]);
+        if ((2 * a) < (b))
         {
-            a[i]='(';
-            a[i+1]=')';
+            ll temp = (b);
+            while (temp >(2*a) )
+            {
+                double ab = (temp / double(2));
+                temp = ceil(ab);
+                count++;
+            }
         }
     }
-  ll count =0;
-  for(int i=0;i<n;i++)
-  {
-    if(a[i]=='?') count++;
-  }
-if(count%2) cout<<"NO\n";
-else cout<<"YES\n";
-
-}   
-
-
-    
-
+    cout<<count<<endl;
+}
 int main()
 {
     fast_cin();
