@@ -43,46 +43,50 @@ ll power(ll a, ll n)
     return res;
 }
 //----------------------code begines here-----------------------
-ll check(ll arr[], ll n, ll k, ll h)
+bool isprime(ll n)
 {
-    ll temp = 0;
-    for (int i = 0; i + 1 < n; i++)
+    if(n==2 or n==3 or n==5 or n==7 ) return true; 
+    if ((n % 2) == 0 or ((n % 3) == 0) or ((n % 5) == 0))
+        return false;
+    for (int i = 5; i * i <= n; i += 2)
     {
-        temp += min(k, (arr[i + 1] - arr[i]));
+        if ((n % i) == 0 or (n % (i + 2)) == 0)
+            return false;
     }
-    temp += k;
-    return temp;
+    return true;
 }
 void dontquit()
 {
-    ll n, h;
-    cin >> n >> h;
-    ll arr[n];
+    ll n;
+    cin >> n;
+    string s;
+    cin >> s;
     for (int i = 0; i < n; i++)
-        cin >> arr[i];
-    ll ans = 0;
-    ll temp = n;
-    ll low = 1, high = (h);
-    ll mid;
-    while (low <= high)
     {
-        mid = (low + ((high - low) / 2));
-        if (check(arr, n, mid, h) < h)
-
-            low = mid + 1;
-
-        else
-            high = mid - 1;
-    }
-    cout<<low<<endl;
-}
-    int main()
-    {
-        ll t = 1;
-        cin >> t;
-        while (t--)
+        if (!isprime(s[i] - 48))
         {
-            dontquit();
+            cout << 1 << endl;
+            cout << (s[i] - 48) << endl;
+            return;
         }
-        return 0;
     }
+    for(int i=0;i+1<n;i++)
+    {
+        if(!isprime(stoll(s.substr(i,2))))
+        {
+            cout<<2<<endl;
+            cout<<s.substr(i,2)<<endl;
+            return;
+        }
+    }
+}
+int main()
+{
+    ll t = 1;
+    cin >> t;
+    while (t--)
+    {
+        dontquit();
+    }
+    return 0;
+}

@@ -43,46 +43,39 @@ ll power(ll a, ll n)
     return res;
 }
 //----------------------code begines here-----------------------
-ll check(ll arr[], ll n, ll k, ll h)
+
+ll total = INT_MIN;
+void chosemax(ll arr[], ll arr1[], ll i, ll x, ll y, ll n)
 {
-    ll temp = 0;
-    for (int i = 0; i + 1 < n; i++)
+    if (i == n)
     {
-        temp += min(k, (arr[i + 1] - arr[i]));
+        total = max(total, min(x, y));
+        return;
     }
-    temp += k;
-    return temp;
+    chosemax(arr, arr1, i + 1, x + arr[i], y,n);
+    chosemax(arr, arr1, i + 1, x, y + arr1[i],n);
 }
 void dontquit()
 {
-    ll n, h;
-    cin >> n >> h;
-    ll arr[n];
+    ll n;
+    cin >> n;
+    ll arr[n], arr1[n];
     for (int i = 0; i < n; i++)
         cin >> arr[i];
-    ll ans = 0;
-    ll temp = n;
-    ll low = 1, high = (h);
-    ll mid;
-    while (low <= high)
-    {
-        mid = (low + ((high - low) / 2));
-        if (check(arr, n, mid, h) < h)
-
-            low = mid + 1;
-
-        else
-            high = mid - 1;
-    }
-    cout<<low<<endl;
+    for (int i = 0; i < n; i++)
+        cin >> arr1[i];
+    // ll a = 0, b = 0, c = 0;
+    chosemax(arr, arr1, 0LL, 0LL, 0LL, n);
+    cout << total << endl;
+    total=INT_MIN;
 }
-    int main()
+int main()
+{
+    ll t = 1;
+    cin >> t;
+    while (t--)
     {
-        ll t = 1;
-        cin >> t;
-        while (t--)
-        {
-            dontquit();
-        }
-        return 0;
+        dontquit();e
     }
+    return 0;
+}
