@@ -43,55 +43,46 @@ ll power(ll a, ll n)
     return res;
 }
 //----------------------code begines here-----------------------
-bool isprime(ll n)
-{
-    if(n==1) return false;
-    if (n == 2 or n == 3 or n == 5 or n == 7)
-        return true;
-    if ((n % 2) == 0 or ((n % 3) == 0) or ((n % 5) == 0))
-        return false;
-    for (int i = 5; i * i <= n; i += 2)
-    {
-        if ((n % i) == 0 or (n % (i + 2)) == 0)
-            return false;
-    }
-    return true;
-}
 void dontquit()
 {
     ll n;
     cin >> n;
-    string s;
-    cin >> s;
+    vector<pair<ll, ll>> v;
+    ll a, b;
     for (int i = 0; i < n; i++)
     {
-        if (!isprime(s[i] - 48))
-        {
-            cout << 1 << endl;
-            cout << (s[i] - 48) << endl;
-            return;
-        }
+        cin >> a >> b;
+        v.push_back({a, b});
     }
+    int flag1 = 0, flag2 = 0, flag3 = 0, flag4 = 0;
+    ll count = 0;
     for (int i = 0; i < n; i++)
     {
-        for (int j = (i + 1); j < n; j++)
+        for (int j = 0; j < n; j++)
         {
-            string a = "";
-            a += s[i];
-            a += s[j];
-            if ((!isprime(stoll(a))))
-            {
-                cout<<2<<endl;
-                cout << a << endl;
-                return;
-            }
+            if ((v[i].first == v[j].first) && v[i].second < v[j].second && flag1 == 0)
+                flag1 = 1;
+            if ((v[i].first == v[j].first) && v[i].second > v[j].second && flag2 == 0)
+                flag2 = 1;
+            if ((v[i].first > v[j].first) && v[i].second == v[j].second && flag3 == 0)
+                flag3 = 1;
+            if ((v[i].first < v[j].first) && v[i].second == v[j].second && flag4 == 0)
+                flag4 = 1;
         }
+        if (flag1 && flag2 && flag3 && flag4)
+            count++;
+        flag1 = 0;
+        flag2 = 0;
+        flag3 = 0;
+        flag4 = 0;
+        
     }
+    cout<<count<<endl;
 }
 int main()
 {
     ll t = 1;
-    cin >> t;
+    // cin>>t;
     while (t--)
     {
         dontquit();

@@ -43,46 +43,70 @@ ll power(ll a, ll n)
     return res;
 }
 //----------------------code begines here-----------------------
-bool isprime(ll n)
-{
-    if(n==1) return false;
-    if (n == 2 or n == 3 or n == 5 or n == 7)
-        return true;
-    if ((n % 2) == 0 or ((n % 3) == 0) or ((n % 5) == 0))
-        return false;
-    for (int i = 5; i * i <= n; i += 2)
-    {
-        if ((n % i) == 0 or (n % (i + 2)) == 0)
-            return false;
-    }
-    return true;
-}
+string abc = "abcdefghijklmnopqrstuvwxyz";
 void dontquit()
 {
     ll n;
     cin >> n;
     string s;
     cin >> s;
+    vector<ll> arr(26, 0);
     for (int i = 0; i < n; i++)
+        arr[(s[i] - 'a')] = 1;
+    // for length 1 string
+    for (int i = 0; i < 26; i++)
     {
-        if (!isprime(s[i] - 48))
+        if (arr[i] == 0)
         {
-            cout << 1 << endl;
-            cout << (s[i] - 48) << endl;
+            cout << char(i + int('a')) << endl;
             return;
         }
     }
-    for (int i = 0; i < n; i++)
+    // for length 2 string
+    set<string> sb;
+    for (int i = 0; i + 1 < n; i++)
     {
-        for (int j = (i + 1); j < n; j++)
+
+        string ab = "";
+        ab += s[i];
+        ab += s[i+1];
+        sb.insert(ab);
+    }
+    for (int i = 0; i < 26; i++)
+    {
+        for (int j = 0; j < 26; j++)
         {
-            string a = "";
-            a += s[i];
-            a += s[j];
-            if ((!isprime(stoll(a))))
+            string abc = "";
+            abc += char(i + int('a'));
+            abc += char(j + int('a'));
+            if (sb.find(abc) == sb.end())
             {
-                cout<<2<<endl;
-                cout << a << endl;
+                cout << abc << endl;
+                return;
+            }
+        }
+    }
+    // for 3 length string
+    set<string> st;
+    for (int i = 0; i + 2 < n; i++)
+    {
+
+        string ab = "";
+        ab += s[i];
+        ab += s[i+1];
+        ab += s[i+2];
+        st.insert(ab);
+    }
+    for (int i = 0; i < 26; i++)
+    {
+        for (int j = 0; j < 26; j++)
+        {
+            string abc = "a";
+            abc += char(i + int('a'));
+            abc += char(j + int('a'));
+            if (st.find(abc) == st.end())
+            {
+                cout << abc << endl;
                 return;
             }
         }
