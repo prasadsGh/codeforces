@@ -10,16 +10,21 @@ ll MOD = 998244353;
 #define all(x) (x).begin(), (x).end()
 //"this is code of prasads_cf"
 //-----------------------SIEVE OF ERATOSTHENES-----------------
-ll isPrime[1000000001];
-void sieve(){ll maxN=1000000000;for(ll i=1;i<=maxN;i++) isPrime[i]=1; isPrime[0]=isPrime[1]=0;
-for(ll i=2;i*i<=maxN;i++){ if(isPrime[i]) { for(ll j=(i*i);j<=maxN;j+=i) isPrime[j]=0;}}}
-//-----------------------BINARY EXPONENTIATION----------------------
+vector<ll> sieve(int n) {int*arr = new int[n + 1](); vector<ll> vect; for (int i = 2; i <= n; i++)
+if (arr[i] == 0) {vect.push_back(i); for (int j = 2 * i; j <= n; j += i)arr[j] = 1;} return vect;}
+//-----------------------BINARY EXPONTIATION----------------------
 ll power(ll a,ll n){ ll res=1; while(n){if(n%2){res*=a;n--;}else{a*=a;n/=2;}} return res;}
 //----------------------code begines here-----------------------
 void dontquit()
 {
-    
-
+    ll n; cin>>n;
+    ll ans=0;
+    while(n)
+    {
+        if(n&1) ans++;
+        n=(n>>1);
+    }
+    cout<<ans<<endl;
 
 }
 int main()
