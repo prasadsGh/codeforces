@@ -1,2 +1,2 @@
 # Codeforces
-all codes of contests , practice problem codes + improvement needed + what to learn next will be added 
+All codes of contests , practice problem codes + improvement needed + what to learn next will be added 
