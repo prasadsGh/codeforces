@@ -46,54 +46,63 @@ ll power(ll a, ll n)
 void dontquit()
 {
     ll n;
-    char x;
-    cin >> n >> x;
-    string s;
-    cin >> s;
-   
-    ll temp;
-    
-   
-    // for (int i = 0; i < n; i++)
-    //     cout << s[i];
-    // cout << endl;
-    int flag = 0, flag1 = 0;
-    ll ans = INT_MIN;
-    ll count = 0;
-    ll temp1 = 0;
+    cin >> n;
+    vector<ll> v;
     for (int i = 0; i < n; i++)
     {
-        if (s[i] == x && flag == 0)
-        {
-            temp1 = i;
-            flag = 1;
-            flag1 = 0;
-        }
-        if (s[i] == 'g' && flag1 == 0)
-        {
-            ans = max(ans, (abs(i - temp1)));
-            flag1 = 1;
-            flag = 0;
-        }
+        ll x;
+        cin >> x;
+        v.pb(x);
     }
-    if(flag==1)
+    map<ll, ll> mp;
+    for (int i = 0; i < n; i++)
     {
-        int temp3=-1;
-        for(int i=0;i<n;i++)
+        mp[v[i]]++;
+    }
+    if(mp.size()==1)
+    {
+        cout<<0<<endl;
+        return;
+    }
+    ll temp = 0, max1 = 0;
+    // for(auto i:mp)
+    // {
+    //     if(i.second>max1)
+    //     {
+    //         max1=i.second;
+    //         temp=i.first;
+    //     }
+    // }
+    // ll temp1=0;
+    // for(auto i:mp)
+    // {
+    //     if((temp^(i.first))==1)
+    //     {
+    //        max1+=(i.second);
+    //     }
+    // }
+    for (auto i : mp)
+    {
+        for (auto j : mp)
         {
-          
-            if(s[i]=='g')
+            if (i.first != j.first)
             {
-                temp3=i;
-                break;
+                if (((i.first) ^ (j.first)) <= 1)
+                {
+                    max1 = max(max1, (i.second + j.second));
+                }
             }
         }
-        
-            ll temp4= (temp3+(n-temp1));
-            ans=max(ans,temp4);
-        
     }
-    cout << ans << endl;
+    if(max1==0)
+    {
+        for(auto i:mp)
+        {
+            max1=max(max1,i.second);
+        }
+    }
+    ll ans = n - max1;
+    cout <<ans<< endl;
 }
 int main()
 {
