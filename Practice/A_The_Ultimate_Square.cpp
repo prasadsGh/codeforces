@@ -47,30 +47,12 @@ void dontquit()
 {
     ll n;
     cin >> n;
-    vector<ll> arr;
-    for (int i = 0; i < n; i++)
+    if (n % 2)
+        cout << (n / 2)+1 << endl;
+    else
     {
-        ll x;
-        cin >> x;
-        arr.pb(x);
-    }
-    if((n&1)==0)
-    {
-        cout<<"YES\n";
-        return ;
-    }
-    else 
-    {
-        for(ll i=0;i+1<n;i++)
-        {
-            if(arr[i+1]<=arr[i])
-            {
-                cout<<"YES\n";
-                return ;
-            }
-        }
-        cout<<"NO\n";
-        return ;
+        ll ans = ((n / 2) );
+        cout << ans << endl;
     }
 }
 int main()

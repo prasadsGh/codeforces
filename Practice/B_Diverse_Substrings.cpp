@@ -47,31 +47,29 @@ void dontquit()
 {
     ll n;
     cin >> n;
-    vector<ll> arr;
-    for (int i = 0; i < n; i++)
+    string s;
+    cin >> s;
+    ll d = 0, f = 0;
+    ll ans = 0;
+    for (ll i = 0; i < n; i++)
     {
-        ll x;
-        cin >> x;
-        arr.pb(x);
-    }
-    if((n&1)==0)
-    {
-        cout<<"YES\n";
-        return ;
-    }
-    else 
-    {
-        for(ll i=0;i+1<n;i++)
+        d = 0, f = 0;
+        vector<ll> v(10, 0);
+
+        for (ll j = i; j < i + 100 && j < n; j++)
         {
-            if(arr[i+1]<=arr[i])
-            {
-                cout<<"YES\n";
-                return ;
-            }
+            v[s[j] - '0']++;
+            if (v[s[j] - '0'] == 1)
+                d++;
+            f = max(f, v[s[j] - '0']);
+            if (f<=d)
+            ans++;
         }
-        cout<<"NO\n";
-        return ;
+        // cout<<d<<" "<<f<<endl;
+        
     }
+    // cout<<"------------"<<endl;
+    cout << ans << endl;
 }
 int main()
 {

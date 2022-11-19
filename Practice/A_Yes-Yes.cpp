@@ -17,39 +17,50 @@ ll power(ll a,ll n){ ll res=1; while(n){if(n%2){res*=a;n--;}else{a*=a;n/=2;}} re
 //----------------------code begines here-----------------------
 void dontquit()
 {
-    string s; 
-    ll n; cin>>n;
-    map<string ,vector<ll>>vp;
-    map<string ,ll>mp;
-    while(n--)
+    string s; cin>>s;
+    ll n= s.length();
+    if(n==1 && (s[0]!='e' && s[0]!='Y' && s[0]!='s') )
     {
-        vector<ll>v;
-        cin>>s;
-        ll sum=0;
-        for(int i=0;i<4;i++)
+        cout<<"NO\n";
+        return;
+    }
+    else if(n==1)
+    {
+        cout<<"YES"<<endl;
+        return;
+    }
+    for(int i=0;i+1<n;i++)
+    {
+        if((s[i]!='e' && s[i]!='Y' && s[i]!='s'))
         {
-            ll x; cin>>x;
-            v.push_back(x);
-            sum+=x;
+            cout<<"NO\n";
+            return;
         }
-        vp[s]=v;
-        mp[s]=sum;
+        if((i!=n-1 && s[i]=='Y' && s[i+1]!='e'))
+        {
+            cout<<"NO\n";
+            return;
+        }
+        if(i!=n-1 && s[i]=='e'&& s[i+1]!='s')
+        {
+            cout<<"NO\n";
+            return;
+        }
+        if(i!=n-1 && s[i]=='s' && s[i+1]!='Y')
+        {
+            cout<<"NO\n";
+            return;
+        }
     }
-    map<string ,vector<ll>>mp1,mp2;
-    // reverse(all(vp));
-    // reverse(all(mp));
-    for(auto i: mp)
-    {
-        cout<<i.first<<endl;
-    }
-
+    cout<<"YES\n";
+    return;
 
 
 }
 int main()
 {
 ll t=1;
-// cin>>t;
+cin>>t;
 while(t--)
 {
 dontquit();

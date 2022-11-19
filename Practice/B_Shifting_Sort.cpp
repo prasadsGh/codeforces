@@ -17,39 +17,54 @@ ll power(ll a,ll n){ ll res=1; while(n){if(n%2){res*=a;n--;}else{a*=a;n/=2;}} re
 //----------------------code begines here-----------------------
 void dontquit()
 {
-    string s; 
     ll n; cin>>n;
-    map<string ,vector<ll>>vp;
-    map<string ,ll>mp;
-    while(n--)
+    vector<ll>v;
+    for(ll i=0;i<n;i++)
     {
-        vector<ll>v;
-        cin>>s;
-        ll sum=0;
-        for(int i=0;i<4;i++)
+        ll x; cin>>x;
+        v.push_back(x);
+    }
+    ll min1=INT_MAX;
+    ll idx=0;
+    // ll count=0;
+    ll min11=*min_element(all(v));
+    vector<pair<ll,ll>>vp;
+    vector<ll>v1=v;
+    sort(all(v1));
+    vector<ll>visited(n,0);
+    ll count=0;
+    for(ll i=0;i<n;i++)
+    {
+        
+        for(ll j=0;j<n;j++)
         {
-            ll x; cin>>x;
-            v.push_back(x);
-            sum+=x;
+            if(is_sorted(all(v)))
+            {
+               break;
+            }
+            if(v1[j]==v[i] && visited[j]==0 && visited[i]==0)
+            {
+                vp.push_back({i,j});
+                swap(v[i],v[j]);
+                swap(visited[i],visited[j]);
+                visited[j]=1;
+                visited[i]=1;
+                count++;
+                break;
+            }
         }
-        vp[s]=v;
-        mp[s]=sum;
     }
-    map<string ,vector<ll>>mp1,mp2;
-    // reverse(all(vp));
-    // reverse(all(mp));
-    for(auto i: mp)
+    cout<<count<<endl;
+    for(auto i:vp)
     {
-        cout<<i.first<<endl;
+        cout<<i.first+1<<" "<<i.second+1<<" "<<1<<endl;
     }
-
-
 
 }
 int main()
 {
 ll t=1;
-// cin>>t;
+cin>>t;
 while(t--)
 {
 dontquit();

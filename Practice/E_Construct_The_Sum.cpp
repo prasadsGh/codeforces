@@ -17,39 +17,39 @@ ll power(ll a,ll n){ ll res=1; while(n){if(n%2){res*=a;n--;}else{a*=a;n/=2;}} re
 //----------------------code begines here-----------------------
 void dontquit()
 {
-    string s; 
-    ll n; cin>>n;
-    map<string ,vector<ll>>vp;
-    map<string ,ll>mp;
-    while(n--)
+    ll n,s; cin>>n>>s;
+    ll sum=((n*(n+1))/2);
+    if(sum<s)
     {
-        vector<ll>v;
-        cin>>s;
-        ll sum=0;
-        for(int i=0;i<4;i++)
-        {
-            ll x; cin>>x;
-            v.push_back(x);
-            sum+=x;
-        }
-        vp[s]=v;
-        mp[s]=sum;
+        cout<<-1<<endl;
+        return;
     }
-    map<string ,vector<ll>>mp1,mp2;
-    // reverse(all(vp));
-    // reverse(all(mp));
-    for(auto i: mp)
+    else 
     {
-        cout<<i.first<<endl;
+       vector<ll>v;
+       ll i=1;
+       ll temp=0;
+       while(s>0)
+       {
+          v.push_back(i);
+          temp=s;
+          s-=i;
+          i++;
+       }
+       cout<<v.size()<<" ";
+       for(ll i=0;i+1<v.size();i++)
+       {
+        cout<<v[i]<<" ";
+       }
+       cout<<temp<<endl;
     }
-
 
 
 }
 int main()
 {
 ll t=1;
-// cin>>t;
+cin>>t;
 while(t--)
 {
 dontquit();

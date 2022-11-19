@@ -17,31 +17,43 @@ ll power(ll a,ll n){ ll res=1; while(n){if(n%2){res*=a;n--;}else{a*=a;n/=2;}} re
 //----------------------code begines here-----------------------
 void dontquit()
 {
-    string s; 
     ll n; cin>>n;
-    map<string ,vector<ll>>vp;
-    map<string ,ll>mp;
-    while(n--)
+    vector<ll>v;
+    for(int i=0;i<n;i++)
     {
-        vector<ll>v;
-        cin>>s;
-        ll sum=0;
-        for(int i=0;i<4;i++)
-        {
-            ll x; cin>>x;
-            v.push_back(x);
-            sum+=x;
+    ll x;
+    cin>>x;
+    v.pb(x);
+    }
+    int flag=0;
+    sort(all(v));
+    for(int i=1;i<n;i++)
+    {
+        if(v[i]!=v[0]){
+            flag=1;
+            break;
         }
-        vp[s]=v;
-        mp[s]=sum;
     }
-    map<string ,vector<ll>>mp1,mp2;
-    // reverse(all(vp));
-    // reverse(all(mp));
-    for(auto i: mp)
+    if(flag==0)
     {
-        cout<<i.first<<endl;
+        cout<<-1<<endl;
+        return;
     }
+    ll min1=INT_MAX;
+       for(int i=0;i<n;i++)
+    {
+         min1=min(min1,v[i]);
+    }
+         for(int i=0;i<n;i++)
+    {
+         v[i]-=min1;
+    }
+    ll gcd1=v[0];
+    for(int i=0;i<n;i++)
+    {
+        gcd1=__gcd(gcd1,v[i]);
+    }
+    cout<<gcd1<<endl;
 
 
 
@@ -49,7 +61,7 @@ void dontquit()
 int main()
 {
 ll t=1;
-// cin>>t;
+cin>>t;
 while(t--)
 {
 dontquit();
