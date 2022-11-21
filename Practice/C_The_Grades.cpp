@@ -35,14 +35,54 @@ void dontquit()
         vp[s]=v;
         mp[s]=sum;
     }
-    map<string ,vector<ll>>mp1,mp2;
-    // reverse(all(vp));
-    // reverse(all(mp));
+   
+  
+    vector<pair<ll,string>>vp1;
     for(auto i: mp)
     {
-        cout<<i.first<<endl;
+        vp1.push_back({i.second,i.first});
     }
-
+    
+    sort(all(vp1));
+    reverse(all(vp1));
+    for(int i=0;i<vp1.size();i++)
+    {
+        cout<<vp1[i].first<<" "<<vp1[i].second<<endl;
+    }
+    vector<pair<string,ll>>vpp1,vpp2;
+    cout<<"------------\n";
+    for(int i=0;i+1<vp1.size();i++)
+    {
+        if(abs(vp1[i].first-vp1[i+1].first)>=10)
+        {
+            vpp1.push_back({vp1[i].second,vp1[i].first});
+            cout<<vp1[i].first<<" "<<vp1[i].second<<endl;
+        }
+        else 
+        {
+           vpp2.push_back({vp1[i].second,vp1[i].first}); 
+        }
+    }
+    //   vpp2.push_back({vp1[vp1.size()-1].second,vp1[vp1.size()-1].first}); 
+    //   sort(all(vpp2));
+    //   for(int i=0;i<vpp1.size();i++)
+    //   {
+    //     cout<<vpp1[i].first<<" "<<vpp1[i].second<<" ";
+    //     for(auto i:vp[vpp1[i].first])
+    //     {
+    //         cout<<i<<" ";
+    //     }
+    //     cout<<endl;
+    //   }
+    //   for(int i=0;i<vpp2.size();i++)
+    //   {
+    //     cout<<vpp2[i].first<<" "<<vpp2[i].second<<" ";
+    //     for(auto i:vp[vpp2[i].first])
+    //     {
+    //         cout<<i<<" ";
+    //     }
+    //     cout<<endl;
+    //   }
 
 
 }
