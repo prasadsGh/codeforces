@@ -76,51 +76,67 @@ double eps = 1e-12;
 //this code belongs to prasad patil
 #define all(x) (x).begin(), (x).end()
 #define sz(x) ((ll)(x).size())
+
  
 
 void prasad(){
     ll n;
     cin>>n;
-    ll arr[n];
-    for(int i=0;i<n;i++)
+    char arr[n+1][n+1];
+    for(int i=1;i<=n;i++)
     {
-        cin>>arr[i];
-    }
-    vector<pair<ll,ll>>v;
-    for(int i=0;i<n;i++)
-    {
-        v.push_back({arr[i],i});
-    }
-    sort(all(v));
-    ll ans=0;
-    ll i=0,j=(n-1);
-    while(i<j)
-    {
-        if(v[i].second<=v[j].second)
+        for(int j=1;j<=n;j++)
         {
-            ans=max(ans,abs(v[i].first-v[j].first));
+            cin>>arr[i][j];
         }
-        j--;
     }
-    i=0,j=(n-1);
-    while(i<j)
+    char a= arr[1][1];
+    char b=arr[1][2];
+    if(a==b)
     {
-        if(v[i].second<=v[j].second)
-        {
-            ans=max(ans,abs(v[i].first-v[j].first));
-        }
-        i++;
+        cout<<"NO\n";
+        return;
     }
-    cout<<ans<<endl;
-    
+    else
+    {
+         int flag=0;
+    for(int i=1;i<=n;i++)
+    {
+        for(int j=1;j<=n;j++)
+        {
+            if(i==j)
+            {
+                if(arr[i][j]!=a) 
+                {
+                    cout<<"NO\n";
+                    return;
+                }
+            }
+            else if((i+j)==(n+1))
+            {
+                if(arr[i][j]!=a) 
+                {
+                    cout<<"NO\n";
+                    return;
+                }
+            }
+            else if(arr[i][j]!=b)
+            {
+                cout<<"NO\n";
+                return;
+            }
+           
+        }
+
+    }
+    cout<<"YES\n";
+
+    }
+   
+
 }
 int main()
 {
- fast_cin();
- ll t;
- cin >> t;
- while(t--) {
  prasad();
- }
  return 0;
 }

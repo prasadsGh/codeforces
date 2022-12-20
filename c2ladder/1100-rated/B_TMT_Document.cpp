@@ -81,38 +81,28 @@ double eps = 1e-12;
 void prasad(){
     ll n;
     cin>>n;
-    ll arr[n];
+    string s;
+    cin>>s;
+    vector<ll> m,t;
     for(int i=0;i<n;i++)
     {
-        cin>>arr[i];
+        if(s[i]=='M') m.push_back(i);
+        else t.push_back(i);
     }
-    vector<pair<ll,ll>>v;
-    for(int i=0;i<n;i++)
+    if((t.size())!=(2*(m.size())))
     {
-        v.push_back({arr[i],i});
+        cout<<"NO\n";
+        return ;
     }
-    sort(all(v));
-    ll ans=0;
-    ll i=0,j=(n-1);
-    while(i<j)
+    for(int i=0;i<m.size();i++)
     {
-        if(v[i].second<=v[j].second)
+        if((m[i]<t[i]) or (m[i]>t[i+m.size()]))
         {
-            ans=max(ans,abs(v[i].first-v[j].first));
+            cout<<"NO\n";
+            return;
         }
-        j--;
     }
-    i=0,j=(n-1);
-    while(i<j)
-    {
-        if(v[i].second<=v[j].second)
-        {
-            ans=max(ans,abs(v[i].first-v[j].first));
-        }
-        i++;
-    }
-    cout<<ans<<endl;
-    
+    cout<<"YES\n";
 }
 int main()
 {

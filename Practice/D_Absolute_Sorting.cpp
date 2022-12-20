@@ -15,36 +15,34 @@ if (arr[i] == 0) {vect.push_back(i); for (int j = 2 * i; j <= n; j += i)arr[j] =
 //-----------------------BINARY EXPONTIATION----------------------
 ll power(ll a,ll n){ ll res=1; while(n){if(n%2){res*=a;n--;}else{a*=a;n/=2;}} return res;}
 //----------------------code begines here-----------------------
+
 void dontquit()
 {
     ll n; cin>>n;
-    char c; cin>>c;
-    string s; cin>>s;
-    s+=s;
-    // cout<<s<<endl;
-    ll ans=0, count=0;
-    n=s.length();
-    if(c=='g')
+    vector<ll>v(n);
+    for(ll i=0;i<n;i++) cin>>v[i];
+    ll mx=0;
+    for(ll i=0;i+1<n;i++)
     {
-        cout<<0<<endl;
-        return;
+        if(v[i]>v[i+1])
+        {
+            mx=max(mx,v[i+1]+((v[i]-v[i+1]+1)/2));
+        }
     }
-    ll flag=0;
     for(ll i=0;i<n;i++)
     {
-        if(s[i]==c && flag==0)
-        {
-            count=1;  
-            flag=1;   
-        }
-        else if(s[i]=='g' && flag==1)
-        {
-            ans=max(ans,count);
-            flag=0;
-        }
-        else count++;
+        v[i]=abs(v[i]-mx);
     }
-    cout<<ans<<endl;
+    for(ll i=0;i+1<n;i++)
+    {
+        if(v[i]>v[i+1])
+        {
+            cout<<-1<<endl;
+            return;
+        }
+    }
+    cout<<mx<<endl;
+    
 
 
 }

@@ -86,38 +86,32 @@ void prasad()
     cin >> n;
     ll arr[n];
     for (int i = 0; i < n; i++)
+    {
         cin >> arr[i];
-    if(arr[0]==1)
+    }
+    ll count = 0;
+    ll ans = 0;
+ 
+    
+    ll j = 1;
+    for (int i = 0; i < n;i++ )
     {
-        cout<<(n+1)<<" ";
+        while(i<n && arr[i]>=j)
+        {
+            count++;
+            i++;
+            j++;
+        }
+        ans+=((count*(count+1))/2);
+        i--;
+        j=1;
+        count=0;  
+    }
+  
 
-        for (int i = 1; i <= n; i++)
-            cout << i << " ";
-        cout << endl;
-    }
-    else if (arr[n - 1] == 0)
-    {
-        for (int i = 1; i <= (n + 1); i++)
-            cout << i << " ";
-        cout << endl;
-    }
-    else 
-    {
-          for (int i = 0; i+1 < n; i++)
-            {
-                if (arr[i] == 0 && arr[i+1] == 1)
-                {
-                    for (int j = 1; j <= i+1; j++)
-                        cout << j << " ";
-                    cout << (n + 1) << " ";
-                    for (int k = (i + 2); k <= n; k++)
-                        cout << k << " ";
-                    cout << endl;
-                    return;
-                }
-            }   
-        
-    }
+   
+    
+    cout << ans << endl;
 }
 int main()
 {

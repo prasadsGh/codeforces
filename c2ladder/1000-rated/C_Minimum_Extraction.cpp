@@ -86,33 +86,20 @@ void prasad(){
     {
         cin>>arr[i];
     }
-    vector<pair<ll,ll>>v;
-    for(int i=0;i<n;i++)
+    sort(arr,arr+n);
+    vector<int> v;
+    ll sum=arr[0];
+    v.push_back(arr[0]);
+    for(int i=1;i<n;i++)
     {
-        v.push_back({arr[i],i});
+        arr[i]-=sum;
+        v.push_back(arr[i]);
+        sum+=(arr[i]);
+
     }
-    sort(all(v));
-    ll ans=0;
-    ll i=0,j=(n-1);
-    while(i<j)
-    {
-        if(v[i].second<=v[j].second)
-        {
-            ans=max(ans,abs(v[i].first-v[j].first));
-        }
-        j--;
-    }
-    i=0,j=(n-1);
-    while(i<j)
-    {
-        if(v[i].second<=v[j].second)
-        {
-            ans=max(ans,abs(v[i].first-v[j].first));
-        }
-        i++;
-    }
-    cout<<ans<<endl;
-    
+ ll ans= *max_element(v.begin(),v.end());
+ cout<<ans<<endl;
+
 }
 int main()
 {

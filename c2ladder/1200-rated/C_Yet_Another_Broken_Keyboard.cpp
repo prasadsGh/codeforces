@@ -17,41 +17,41 @@ ll power(ll a,ll n){ ll res=1; while(n){if(n%2){res*=a;n--;}else{a*=a;n/=2;}} re
 //----------------------code begines here-----------------------
 void dontquit()
 {
-    ll n; cin>>n;
-    char c; cin>>c;
+    ll n,k; cin>>n>>k;
     string s; cin>>s;
-    s+=s;
-    // cout<<s<<endl;
-    ll ans=0, count=0;
-    n=s.length();
-    if(c=='g')
+    map<char,int>mp;
+    while(k--)
     {
-        cout<<0<<endl;
-        return;
+        char a; cin>>a;
+        mp[a]++;
     }
-    ll flag=0;
+
+    ll value=0;
+    ll count=0;
     for(ll i=0;i<n;i++)
     {
-        if(s[i]==c && flag==0)
+        if(mp.find(s[i])!=mp.end())
         {
-            count=1;  
-            flag=1;   
+            count++;
         }
-        else if(s[i]=='g' && flag==1)
+        else
         {
-            ans=max(ans,count);
-            flag=0;
+            value+=((count*(count+1))/2);
+            // cout<<count<<" ";
+            count=0;
         }
-        else count++;
     }
-    cout<<ans<<endl;
+    value+=((count*(count+1))/2);
+
+    cout<<value<<endl;
+    
 
 
 }
 int main()
 {
 ll t=1;
-cin>>t;
+// cin>>t;
 while(t--)
 {
 dontquit();

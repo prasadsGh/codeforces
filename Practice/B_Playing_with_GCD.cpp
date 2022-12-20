@@ -78,40 +78,30 @@ double eps = 1e-12;
 #define sz(x) ((ll)(x).size())
  
 
+
 void prasad(){
     ll n;
     cin>>n;
-    ll arr[n];
+    ll a[n], b[n+1];
     for(int i=0;i<n;i++)
     {
-        cin>>arr[i];
+        cin>>a[i];
     }
-    vector<pair<ll,ll>>v;
+    b[0]=a[0];
+    for(int i=0;i<n-1;i++)
+    {
+        b[i+1]=((a[i]*a[i+1])/__gcd(a[i],a[i+1]));
+    }
+    b[n]=a[n-1];
     for(int i=0;i<n;i++)
     {
-        v.push_back({arr[i],i});
-    }
-    sort(all(v));
-    ll ans=0;
-    ll i=0,j=(n-1);
-    while(i<j)
-    {
-        if(v[i].second<=v[j].second)
-        {
-            ans=max(ans,abs(v[i].first-v[j].first));
+        if(__gcd(b[i],b[i+1])!=a[i]){
+            cout<<"NO\n";
+            return;
         }
-        j--;
     }
-    i=0,j=(n-1);
-    while(i<j)
-    {
-        if(v[i].second<=v[j].second)
-        {
-            ans=max(ans,abs(v[i].first-v[j].first));
-        }
-        i++;
-    }
-    cout<<ans<<endl;
+    cout<<"YES\n";
+    return;
     
 }
 int main()

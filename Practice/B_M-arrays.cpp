@@ -17,34 +17,41 @@ ll power(ll a,ll n){ ll res=1; while(n){if(n%2){res*=a;n--;}else{a*=a;n/=2;}} re
 //----------------------code begines here-----------------------
 void dontquit()
 {
-    ll n; cin>>n;
-    char c; cin>>c;
-    string s; cin>>s;
-    s+=s;
-    // cout<<s<<endl;
-    ll ans=0, count=0;
-    n=s.length();
-    if(c=='g')
-    {
-        cout<<0<<endl;
-        return;
-    }
-    ll flag=0;
+    ll n,m; cin>>n>>m;
+    vector<ll>v(n);
+    for(ll i=0;i<n;i++) cin>>v[i];
+    ll count=0;
+    vector<ll>hash(m,0);
     for(ll i=0;i<n;i++)
     {
-        if(s[i]==c && flag==0)
-        {
-            count=1;  
-            flag=1;   
-        }
-        else if(s[i]=='g' && flag==1)
-        {
-            ans=max(ans,count);
-            flag=0;
-        }
-        else count++;
+        hash[v[i]%m]++;
     }
-    cout<<ans<<endl;
+    //  for(ll i=0;i<m;i++)
+    // {
+    //     cout<<i<<" "<<hash[i]<<endl;
+    // }
+    if(hash[0]!=0) count++;
+    ll i=1,j=(m-1);
+    // cout<<count<<endl;
+    while(i<=j)
+    {
+        if(hash[i]!=0 and hash[j]!=0)
+        {
+            count++;
+            if(abs(hash[i]-hash[j])>0)
+            count+=abs(hash[i]-hash[j])-1;
+        }
+        else if(hash[i]!=0 && hash[j]==0) count+=(hash[i]);
+        else if(hash[i]==0 && hash[j]!=0) count+=(hash[j]);
+        // cout<<i<<" "<<j<<" "<<count<<endl;
+        i++;
+        j--;
+        // cout<<count<<endl;
+    }
+    
+     
+    cout<<count<<endl;
+    // cout<<"---------\n";
 
 
 }

@@ -18,34 +18,22 @@ ll power(ll a,ll n){ ll res=1; while(n){if(n%2){res*=a;n--;}else{a*=a;n/=2;}} re
 void dontquit()
 {
     ll n; cin>>n;
-    char c; cin>>c;
     string s; cin>>s;
-    s+=s;
-    // cout<<s<<endl;
-    ll ans=0, count=0;
-    n=s.length();
-    if(c=='g')
+    ll m=((2*n)-1);
+    m-=n;
+    ll ans=2;
+   
+    if(m==0)
     {
-        cout<<0<<endl;
+        cout<<1 <<endl;
         return;
     }
-    ll flag=0;
-    for(ll i=0;i<n;i++)
+    while(m--)
     {
-        if(s[i]==c && flag==0)
-        {
-            count=1;  
-            flag=1;   
-        }
-        else if(s[i]=='g' && flag==1)
-        {
-            ans=max(ans,count);
-            flag=0;
-        }
-        else count++;
+        ans*=2;
+        ans%=MOD;
     }
     cout<<ans<<endl;
-
 
 }
 int main()

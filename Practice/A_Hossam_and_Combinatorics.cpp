@@ -18,33 +18,30 @@ ll power(ll a,ll n){ ll res=1; while(n){if(n%2){res*=a;n--;}else{a*=a;n/=2;}} re
 void dontquit()
 {
     ll n; cin>>n;
-    char c; cin>>c;
-    string s; cin>>s;
-    s+=s;
-    // cout<<s<<endl;
-    ll ans=0, count=0;
-    n=s.length();
-    if(c=='g')
+    vector<ll>v;
+    for(int i=0;i<n;i++)
     {
-        cout<<0<<endl;
+    ll x;
+    cin>>x;
+    v.pb(x);
+    }
+    ll min1=*min_element(all(v));
+    ll max1=*max_element(all(v));
+    map<ll,ll>mp;
+    for(int i=0;i<n;i++)
+    {
+        mp[v[i]]++;
+    }
+    if(min1==max1)
+    {
+        ll ans=(n*(n-1));
+        cout<<ans<<endl;
         return;
     }
-    ll flag=0;
-    for(ll i=0;i<n;i++)
-    {
-        if(s[i]==c && flag==0)
-        {
-            count=1;  
-            flag=1;   
-        }
-        else if(s[i]=='g' && flag==1)
-        {
-            ans=max(ans,count);
-            flag=0;
-        }
-        else count++;
-    }
-    cout<<ans<<endl;
+    ll temp1=mp[min1];
+    ll temp2=mp[max1];
+    temp1=(2*temp1*temp2);
+    cout<<temp1<<endl;
 
 
 }

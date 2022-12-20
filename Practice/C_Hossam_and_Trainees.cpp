@@ -15,46 +15,54 @@ if (arr[i] == 0) {vect.push_back(i); for (int j = 2 * i; j <= n; j += i)arr[j] =
 //-----------------------BINARY EXPONTIATION----------------------
 ll power(ll a,ll n){ ll res=1; while(n){if(n%2){res*=a;n--;}else{a*=a;n/=2;}} return res;}
 //----------------------code begines here-----------------------
-void dontquit()
+void dontquit(vector<ll>&facts,ll n1)
 {
-    ll n; cin>>n;
-    char c; cin>>c;
-    string s; cin>>s;
-    s+=s;
-    // cout<<s<<endl;
-    ll ans=0, count=0;
-    n=s.length();
-    if(c=='g')
+    set<ll>s;
+    vector<ll>v;
+    ll n;
+    cin>>n;
+    for(int i=0;i<n;i++)
     {
-        cout<<0<<endl;
-        return;
+    ll x;
+    cin>>x;
+    v.pb(x);
     }
-    ll flag=0;
-    for(ll i=0;i<n;i++)
+    for(int i=0;i<n;i++)
     {
-        if(s[i]==c && flag==0)
+        for(ll j=0;j<n1;j++)
         {
-            count=1;  
-            flag=1;   
+            if((v[i]%facts[j])==0)
+            {
+                if(s.find(facts[j])!=s.end())
+                {
+                    cout<<"YES\n";
+                    return;
+                }
+                else s.insert(facts[j]);
+            }
         }
-        else if(s[i]=='g' && flag==1)
-        {
-            ans=max(ans,count);
-            flag=0;
-        }
-        else count++;
     }
-    cout<<ans<<endl;
-
+    cout<<"NO\n";
+    return;
 
 }
 int main()
 {
 ll t=1;
 cin>>t;
+
+vector<ll>facts;
+facts.push_back(2);
+facts.push_back(3);
+for(ll i=5;i*i<=1e9;i++)
+{
+    facts.push_back(i);
+}
+ll n1=facts.size();
+
 while(t--)
 {
-dontquit();
+dontquit(facts,n1);
 }
 return 0;
 }

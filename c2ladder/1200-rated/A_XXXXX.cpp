@@ -17,34 +17,38 @@ ll power(ll a,ll n){ ll res=1; while(n){if(n%2){res*=a;n--;}else{a*=a;n/=2;}} re
 //----------------------code begines here-----------------------
 void dontquit()
 {
-    ll n; cin>>n;
-    char c; cin>>c;
-    string s; cin>>s;
-    s+=s;
-    // cout<<s<<endl;
-    ll ans=0, count=0;
-    n=s.length();
-    if(c=='g')
+    ll l=-1,r=-1;
+    ll n,k; cin>>n>>k;
+    ll i=0;
+    ll sum=0;
+    while(i<n)
     {
-        cout<<0<<endl;
+        ll a;
+        cin>>a;
+        if((a%k)!=0)
+        {
+            if(l==-1)
+               l=i;
+
+            r=i;
+        }
+        i++;
+        sum+=a;
+    }
+
+    if((sum%k)!=0)
+    {
+        cout<<n<<endl;
         return;
     }
-    ll flag=0;
-    for(ll i=0;i<n;i++)
+    else if(l==-1)
     {
-        if(s[i]==c && flag==0)
-        {
-            count=1;  
-            flag=1;   
-        }
-        else if(s[i]=='g' && flag==1)
-        {
-            ans=max(ans,count);
-            flag=0;
-        }
-        else count++;
+        cout<<-1<<endl;
     }
-    cout<<ans<<endl;
+    else
+    {
+            cout<<n-min(l+1,n-r)<<endl;
+    }
 
 
 }

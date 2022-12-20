@@ -79,35 +79,16 @@ double eps = 1e-12;
  
 
 void prasad(){
-    ll n,m;
-    cin>>n>>m;
-    ll sum=0;
-    ll ab;
-       ll temp=0;
-       ll temp1=0;
-    for(int i=0;i<n;i++)
-    {
-        
-        
-        for(int j=0;j<m;j++)
-        {
-            
-        }
-       
-        
-       
-        
-    }
-   
-    cout<<sum<<endl;
+    ll n;
+    cin>>n;
+    ll ans = pow(2,n+1)-2;
+    cout<<ans<<endl;
+
+  
+
 }
 int main()
 {
- fast_cin();
- ll t;
- cin >> t;
- while(t--) {
  prasad();
- }
  return 0;
 }
