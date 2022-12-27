@@ -45,26 +45,45 @@ ll power(ll a, ll n)
 //----------------------code begines here-----------------------
 void dontquit()
 {
-    ll n;
-    cin >> n;
-    ll arr[n];
-    for (int i = 0; i < n; i++)
-        cin >> arr[i];
-    priority_queue<ll> pq1, pq2, pq3;
-    ll temp = (n / 3);
-    sort(arr, arr + n);
-    ll mx=0;
-    for(ll i=0;i+1<n;i++)
-    {
-        mx=max(mx,max(arr[n-1]+arr[i+1]-(2*arr[i]),(2*arr[i+1]-arr[i]-arr[0])));
-    }
-    cout<<mx<<endl;
+    ll n, k;
+    cin >> n >> k;
+    vector<ll> v(n);
+    for (ll i = 0; i < n; i++)
+        cin >> v[i];
 
+    sort(all(v));
+    ll ans = -1;
+    if (k == 0)
+    {
+        if ((v[k] - 1) <= 0)
+        {
+            cout << -1 << endl;
+            return;
+        }
+        else
+        {
+            ans = v[0] - 1;
+        }
+    }
+    else if (k <= n)
+    {
+        if (k == 1 && k == n)
+        {
+            ans = v[0];
+        }
+
+       else if (v[k - 1] != v[k])
+        {
+            ans = v[k - 1];
+        }
+    }
+
+    cout << ans << endl;
 }
 int main()
 {
     ll t = 1;
-    cin >> t;
+    // cin>>t;
     while (t--)
     {
         dontquit();

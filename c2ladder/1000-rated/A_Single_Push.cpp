@@ -1,0 +1,75 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long 
+#define vll vector<ll>
+#define fori(n) for(int i=0;i<n;i++)
+#define pb push_back
+ll MOD = 998244353;
+#define dbg(x) cout << #x << " = " << x << ln
+#define INF 2e18
+#define all(x) (x).begin(), (x).end()
+//"this is code of prasads_cf"
+//-----------------------SIEVE OF ERATOSTHENES-----------------
+vector<ll> sieve(int n) {int*arr = new int[n + 1](); vector<ll> vect; for (int i = 2; i <= n; i++)
+if (arr[i] == 0) {vect.push_back(i); for (int j = 2 * i; j <= n; j += i)arr[j] = 1;} return vect;}
+//-----------------------BINARY EXPONTIATION----------------------
+ll power(ll a,ll n){ ll res=1; while(n){if(n%2){res*=a;n--;}else{a*=a;n/=2;}} return res;}
+//----------------------code begines here-----------------------
+void dontquit()
+{
+    ll n; cin>>n;
+    vector<ll>a(n),b(n);
+    for(ll i=0;i<n;i++) cin>>a[i];
+    for(ll i=0;i<n;i++) cin>>b[i];
+    vector<ll>ans;
+    if(a==b)
+    {
+        cout<<"YES\n";
+        return;
+    }
+    
+    int flag=0;
+    for(ll i=0;i<n;i++)
+    {
+        if((a[i]-b[i])>0)
+        {
+            cout<<"NO\n";
+            return;
+        }
+        if((a[i]!=b[i]) or flag)
+        {
+            flag=1;
+            ans.push_back(a[i]-b[i]);
+        }   
+    }
+    for(ll i=0;i+1<ans.size();i++)
+    {
+      if((ans[i]!=ans[i+1]) && (ans[i+1]!=0) && ans[i]<=0)
+      {
+        cout<<"NO\n";
+        return;
+      }
+    }
+    if(n==1)
+    {
+        if((a[0]-b[0])>0)
+        {
+            cout<<"NO\n";
+            return;
+        }
+       
+    }
+    cout<<"YES\n";
+
+
+}
+int main()
+{
+ll t=1;
+cin>>t;
+while(t--)
+{
+dontquit();
+}
+return 0;
+}

@@ -43,28 +43,54 @@ ll power(ll a, ll n)
     return res;
 }
 //----------------------code begines here-----------------------
+bool custhash(pair<ll, ll> &a, pair<ll, ll> &b)
+{
+
+    if (a.first == b.first)
+    {
+        
+         if (a.second < b.second)
+            return true;
+        else
+            return false;
+    }
+    if (a.first > b.first)
+        return a.first > b.first;
+    else
+        return false;
+}
 void dontquit()
 {
-    ll n;
-    cin >> n;
-    ll arr[n];
-    for (int i = 0; i < n; i++)
-        cin >> arr[i];
-    priority_queue<ll> pq1, pq2, pq3;
-    ll temp = (n / 3);
-    sort(arr, arr + n);
-    ll mx=0;
-    for(ll i=0;i+1<n;i++)
+    ll n, k;
+    cin >> n >> k;
+    vector<pair<ll, ll>> vp;
+    for (ll i = 0; i < n; i++)
     {
-        mx=max(mx,max(arr[n-1]+arr[i+1]-(2*arr[i]),(2*arr[i+1]-arr[i]-arr[0])));
+        ll x, y;
+        cin >> x >> y;
+        vp.push_back({x, y});
     }
-    cout<<mx<<endl;
+    n=vp.size();
+    sort(vp.begin(), vp.end(), custhash);
+    map<pair<ll, ll>, ll> mp;
+    // for(ll i=0;i<n;i++)  
+    // {
+    //     cout<<vp[i].first<<" "<<vp[i].second<<endl;
+    // }
+    for (ll i = 0; i < n; i++)
+    {
+        mp[{vp[i].first, vp[i].second}]++;
+    }
+    // cout << vp[k - 1].first<<" "<<vp[k-1].second<< endl;
+    cout<<mp[vp[k-1]]<<endl;
 
+    // cout<<vp.size()<<endl;
+    // cout<<count<<endl;
 }
 int main()
 {
     ll t = 1;
-    cin >> t;
+    // cin>>t;
     while (t--)
     {
         dontquit();
