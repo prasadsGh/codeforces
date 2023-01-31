@@ -22,48 +22,26 @@ if (arr[i] == 0) {vect.push_back(i); for (int j = 2 * i; j <= n; j += i)arr[j] =
 //-----------------------BINARY EXPONTIATION----------------------
 ll power(ll a,ll n){ ll res=1; while(n){if(n%2){res*=a;n--;}else{a*=a;n/=2;}} return res;}
 //----------------------code begines here-----------------------
+bool fun(ll n)
+{
+    set<ll>s;
+    while(n)
+    {
+        if(s.find(n%10)!=s.end()) return false;
+        s.insert(n%10);
+        n/=10;
+    }
+    return true;
+}
 void dontquit()
 {  
 ll n; cin>>n;
-ll t; cin>>t;
-string s; cin>>s;
-ll count=0;
-vector<ll>temp;
-for(ll i=0;i<n;i++)
+n++;
+while(!fun(n))
 {
-    if(s[i]=='G') temp.push_back(i);
+    n++;
 }
-ll m=temp.size();
-if(m==0) 
-{
-    cout<<s<<endl;
-    return;
-}
-int temp1=temp[0];
-while(t--)
-{
-    for(ll i=0;i<m;i++)
-    {
-        
-        if(temp[i]!=0 && (temp[i]-1)!=temp1)
-        {
-            temp[i]--;
-            temp1=temp[i]+1;
-        }
-        else temp1=temp[i];
-        
-    }
-}
-vector<char>ans(n,'B');
-for(ll i=0;i<m;i++)
-{
-    ans[temp[i]]='G';
-}
-for(int i=0;i<n;i++)
-{
-    cout<<ans[i];
-}
-cout<<endl;
+cout<<n<<endl;
 }
 int main()
 {

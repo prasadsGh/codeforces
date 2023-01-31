@@ -24,46 +24,27 @@ ll power(ll a,ll n){ ll res=1; while(n){if(n%2){res*=a;n--;}else{a*=a;n/=2;}} re
 //----------------------code begines here-----------------------
 void dontquit()
 {  
-ll n; cin>>n;
-ll t; cin>>t;
-string s; cin>>s;
-ll count=0;
-vector<ll>temp;
-for(ll i=0;i<n;i++)
+string a;
+cin>>a;
+ll temp=-1;
+for(ll i=0;i<a.length();i++)
 {
-    if(s[i]=='G') temp.push_back(i);
-}
-ll m=temp.size();
-if(m==0) 
-{
-    cout<<s<<endl;
-    return;
-}
-int temp1=temp[0];
-while(t--)
-{
-    for(ll i=0;i<m;i++)
+    if(a[i]=='*' or a[i]=='+' or a[i]=='-' or a[i]=='/')
     {
-        
-        if(temp[i]!=0 && (temp[i]-1)!=temp1)
-        {
-            temp[i]--;
-            temp1=temp[i]+1;
-        }
-        else temp1=temp[i];
-        
+        temp=i;
+        break;
     }
 }
-vector<char>ans(n,'B');
-for(ll i=0;i<m;i++)
-{
-    ans[temp[i]]='G';
-}
-for(int i=0;i<n;i++)
-{
-    cout<<ans[i];
-}
-cout<<endl;
+ll i=temp;
+ll a1=stoll(a.substr(0,i));
+ll a2=stoll(a.substr(i+1,a.length()-i-1));
+// cout<<a1<<" "<<a2<<endl;
+if(a[i]=='*') cout<<a1*a2<<endl;
+else if(a[i]=='+') cout<<a1+a2<<endl;
+else if(a[i]=='/') cout<<a1/a2<<endl;
+else cout<<a1-a2<<endl;
+  
+
 }
 int main()
 {

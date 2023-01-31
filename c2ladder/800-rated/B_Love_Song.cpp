@@ -24,46 +24,32 @@ ll power(ll a,ll n){ ll res=1; while(n){if(n%2){res*=a;n--;}else{a*=a;n/=2;}} re
 //----------------------code begines here-----------------------
 void dontquit()
 {  
-ll n; cin>>n;
-ll t; cin>>t;
-string s; cin>>s;
-ll count=0;
-vector<ll>temp;
-for(ll i=0;i<n;i++)
-{
-    if(s[i]=='G') temp.push_back(i);
-}
-ll m=temp.size();
-if(m==0) 
-{
-    cout<<s<<endl;
-    return;
-}
-int temp1=temp[0];
-while(t--)
-{
-    for(ll i=0;i<m;i++)
+    ll n,q; cin>>n>>q;
+    string s; cin>>s;
+    map<char,int>mp;
+    for(ll i=0;i<n;i++)
+    {
+        if(mp.find(s[i])==mp.end())
+        {
+            mp[s[i]]=s[i]-'a'+1;
+        }
+    }
+    vector<ll>pre(n);
+    pre[0]=mp[s[0]];
+    for(ll i=1;i<n;i++)
+    {
+        pre[i]=pre[i-1]+mp[s[i]];
+    }
+    while(q--)
     {
         
-        if(temp[i]!=0 && (temp[i]-1)!=temp1)
-        {
-            temp[i]--;
-            temp1=temp[i]+1;
-        }
-        else temp1=temp[i];
-        
+        ll l,r; cin>>l>>r;
+        ll sum=(pre[r-1]-pre[l-1]+mp[s[l-1]]);
+        cout<<sum<<endl;
     }
-}
-vector<char>ans(n,'B');
-for(ll i=0;i<m;i++)
-{
-    ans[temp[i]]='G';
-}
-for(int i=0;i<n;i++)
-{
-    cout<<ans[i];
-}
-cout<<endl;
+
+  
+
 }
 int main()
 {

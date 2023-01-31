@@ -24,46 +24,47 @@ ll power(ll a,ll n){ ll res=1; while(n){if(n%2){res*=a;n--;}else{a*=a;n/=2;}} re
 //----------------------code begines here-----------------------
 void dontquit()
 {  
-ll n; cin>>n;
-ll t; cin>>t;
-string s; cin>>s;
-ll count=0;
-vector<ll>temp;
-for(ll i=0;i<n;i++)
-{
-    if(s[i]=='G') temp.push_back(i);
-}
-ll m=temp.size();
-if(m==0) 
-{
-    cout<<s<<endl;
-    return;
-}
-int temp1=temp[0];
-while(t--)
-{
-    for(ll i=0;i<m;i++)
+    ll n; cin>>n;
+    ll sa=0,sb=0;
+    ll a,b; cin>>a>>b;
+    vector<char>v;
+    
+    if(a<=b)
     {
-        
-        if(temp[i]!=0 && (temp[i]-1)!=temp1)
-        {
-            temp[i]--;
-            temp1=temp[i]+1;
-        }
-        else temp1=temp[i];
-        
+        v.push_back('A');
+        sa+=a;
     }
-}
-vector<char>ans(n,'B');
-for(ll i=0;i<m;i++)
-{
-    ans[temp[i]]='G';
-}
-for(int i=0;i<n;i++)
-{
-    cout<<ans[i];
-}
-cout<<endl;
+    else 
+    {
+        v.push_back('G');
+        sb+=b;
+    }
+    n--;
+    while(n--)
+    {
+        ll a,b; cin>>a>>b;
+        if(abs((sa+a)-sb)<=500)
+        {
+            v.push_back('A');
+            sa+=a;
+        }
+        else if(abs((sb+b)-sa)<=500)
+        {
+            v.push_back('G');
+            sb+=b;
+        }
+        else
+        {
+            cout<<-1<<endl;
+            return;
+        }
+    }
+    for(auto i:v) cout<<i;
+    cout<<endl;
+
+
+  
+
 }
 int main()
 {

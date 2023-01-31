@@ -24,46 +24,19 @@ ll power(ll a,ll n){ ll res=1; while(n){if(n%2){res*=a;n--;}else{a*=a;n/=2;}} re
 //----------------------code begines here-----------------------
 void dontquit()
 {  
-ll n; cin>>n;
-ll t; cin>>t;
-string s; cin>>s;
-ll count=0;
-vector<ll>temp;
-for(ll i=0;i<n;i++)
+char a; cin>>a;
+if(int('a')<=int(a) && int(a)<=int('z'))
 {
-    if(s[i]=='G') temp.push_back(i);
+    cout<<"ALPHA"<<endl<<"IS SMALL\n";
 }
-ll m=temp.size();
-if(m==0) 
+else if(int('A')<=int(a) && int(a)<=int('Z'))
 {
-    cout<<s<<endl;
-    return;
+    cout<<"ALPHA"<<endl;
+    cout<<"IS CAPITAL\n";
 }
-int temp1=temp[0];
-while(t--)
-{
-    for(ll i=0;i<m;i++)
-    {
-        
-        if(temp[i]!=0 && (temp[i]-1)!=temp1)
-        {
-            temp[i]--;
-            temp1=temp[i]+1;
-        }
-        else temp1=temp[i];
-        
-    }
-}
-vector<char>ans(n,'B');
-for(ll i=0;i<m;i++)
-{
-    ans[temp[i]]='G';
-}
-for(int i=0;i<n;i++)
-{
-    cout<<ans[i];
-}
-cout<<endl;
+else cout<<"IS DIGIT\n";
+  
+
 }
 int main()
 {

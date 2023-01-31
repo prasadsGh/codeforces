@@ -24,51 +24,41 @@ ll power(ll a,ll n){ ll res=1; while(n){if(n%2){res*=a;n--;}else{a*=a;n/=2;}} re
 //----------------------code begines here-----------------------
 void dontquit()
 {  
-ll n; cin>>n;
-ll t; cin>>t;
-string s; cin>>s;
-ll count=0;
-vector<ll>temp;
-for(ll i=0;i<n;i++)
+ll l,r,k; cin>>l>>r>>k;
+ll o=0,e=0;
+ll gcd1=l;
+if((l&1) or (r&1))
 {
-    if(s[i]=='G') temp.push_back(i);
+    o=((r-l+1)/2);
+    if((l&1) && (r&1)) o++;
 }
-ll m=temp.size();
-if(m==0) 
+else 
 {
-    cout<<s<<endl;
-    return;
+    o=(r-l)/2;
 }
-int temp1=temp[0];
-while(t--)
+if(k==0)
 {
-    for(ll i=0;i<m;i++)
+    if(l==r && l!=1)
     {
-        
-        if(temp[i]!=0 && (temp[i]-1)!=temp1)
-        {
-            temp[i]--;
-            temp1=temp[i]+1;
-        }
-        else temp1=temp[i];
-        
+        cout<<"YES\n";
+        return;
+    }
+    else 
+    {
+        cout<<"NO\n";
+        return;
     }
 }
-vector<char>ans(n,'B');
-for(ll i=0;i<m;i++)
+else if(o>k)
 {
-    ans[temp[i]]='G';
+    cout<<"NO\n";
 }
-for(int i=0;i<n;i++)
-{
-    cout<<ans[i];
-}
-cout<<endl;
+else cout<<"YES\n";
 }
 int main()
 {
 ll t=1;
-// cin>>t;
+cin>>t;
 while(t--)
 {
 dontquit();

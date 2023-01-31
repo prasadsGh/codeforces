@@ -25,50 +25,68 @@ ll power(ll a,ll n){ ll res=1; while(n){if(n%2){res*=a;n--;}else{a*=a;n/=2;}} re
 void dontquit()
 {  
 ll n; cin>>n;
-ll t; cin>>t;
-string s; cin>>s;
-ll count=0;
-vector<ll>temp;
-for(ll i=0;i<n;i++)
+vector<ll>v(n*n);
+for(ll i=0;i<n*n;i++)
 {
-    if(s[i]=='G') temp.push_back(i);
+    v[i]=(i+1);
 }
-ll m=temp.size();
-if(m==0) 
+ ll i=0,j=v.size()-1;
+vector<ll>pre;
+
+while(i<=j)
 {
-    cout<<s<<endl;
-    return;
-}
-int temp1=temp[0];
-while(t--)
-{
-    for(ll i=0;i<m;i++)
+    if(i==j)
     {
-        
-        if(temp[i]!=0 && (temp[i]-1)!=temp1)
-        {
-            temp[i]--;
-            temp1=temp[i]+1;
-        }
-        else temp1=temp[i];
-        
+        pre.push_back(v[i]);
+        break;
     }
+    pre.push_back(v[j]);
+    j--;
+     pre.push_back(v[i]);
+    i++;
+    
+    
+    
+   
 }
-vector<char>ans(n,'B');
-for(ll i=0;i<m;i++)
-{
-    ans[temp[i]]='G';
-}
-for(int i=0;i<n;i++)
-{
-    cout<<ans[i];
-}
-cout<<endl;
+ll mat[n][n];
+ll k=0;
+ll count=0;
+  for(ll i=0;i<n;i++)
+  {
+    if(!(count&1))
+    {
+      for(ll j=0;j<n;j++)
+      {
+        mat[i][j]=pre[k];
+        k++;
+      }
+      count++;
+    }
+    else
+    {
+      for(ll j=n-1;j>=0;j--)
+      {
+        mat[i][j]=pre[k];
+        k++;
+      }
+      count++;
+    }
+    
+  }
+  for(ll i=0;i<n;i++)
+  {
+    for(ll j=0;j<n;j++)
+    {
+      cout<<mat[i][j]<<" ";
+    }
+    cout<<endl;
+  }
 }
 int main()
 {
 ll t=1;
-// cin>>t;
+cin>>t;
 while(t--)
 {
 dontquit();

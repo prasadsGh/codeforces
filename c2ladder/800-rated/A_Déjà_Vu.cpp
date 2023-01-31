@@ -17,31 +17,34 @@ ll power(ll a,ll n){ ll res=1; while(n){if(n%2){res*=a;n--;}else{a*=a;n/=2;}} re
 //----------------------code begines here-----------------------
 void dontquit()
 {
-    ll n; cin>>n;
-    ll mat[n][5];
-    for(ll i=0;i<n;i++)
+    string s; cin>>s;
+    ll n=s.length();
+    
+    string a=("a"+s);
+    string b=(s+"a");
+    ll i=0,j=(n);
+    while(i<j)
     {
-        for(ll j=0;j<5;j++) cin>>mat[i][j];
-    }
-    for(ll j=0;j<5;j++)
-    {
-        for(ll i=j+1;i<5;i++)
+        if(a[i]!=a[j])
         {
-            ll count=0, count1=0,count2=0;
-            for(ll k=0;k<n;k++)
-            {
-                if(mat[k][i]==1) count++;
-                if(mat[k][j]==1) count1++;
-                if(mat[k][j]==0 && mat[k][i]==0) count2++;
-            }
-            if((count+count1)>=n && count>=((n)/2) &&  count1>=((n)/2) && count2==0)
-            {
-                cout<<"YES\n";
-                return;
-            }
-            // cout<<count<<" ";
+            cout<<"YES\n";
+            cout<<a<<endl;
+            return;
         }
-        // cout<<endl;
+        i++;
+        j--;
+    }
+    i=0,j=n;
+    while(i<j)
+    {
+        if(b[i]!=b[j])
+        {
+            cout<<"YES\n";
+            cout<<b<<endl;
+            return;
+        }
+        i++;
+        j--;
     }
     cout<<"NO\n";
 

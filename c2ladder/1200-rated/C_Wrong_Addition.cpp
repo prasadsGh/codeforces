@@ -24,51 +24,42 @@ ll power(ll a,ll n){ ll res=1; while(n){if(n%2){res*=a;n--;}else{a*=a;n/=2;}} re
 //----------------------code begines here-----------------------
 void dontquit()
 {  
-ll n; cin>>n;
-ll t; cin>>t;
-string s; cin>>s;
-ll count=0;
-vector<ll>temp;
-for(ll i=0;i<n;i++)
-{
-    if(s[i]=='G') temp.push_back(i);
-}
-ll m=temp.size();
-if(m==0) 
-{
-    cout<<s<<endl;
-    return;
-}
-int temp1=temp[0];
-while(t--)
-{
-    for(ll i=0;i<m;i++)
+    ll x,y,a,s; cin>>a>>s;
+    ll ans=0;
+    ll mul=1;
+    while(a)
     {
-        
-        if(temp[i]!=0 && (temp[i]-1)!=temp1)
+        x=a%10;
+        y=s%10;
+        a/=10;
+        s/=10;
+        if(x<=y)
         {
-            temp[i]--;
-            temp1=temp[i]+1;
+            ans+=((y-x)*mul);
+            mul*=10;
         }
-        else temp1=temp[i];
-        
+        else
+        {
+            if((s%10)!=1)
+            {
+                cout<<-1<<endl;
+                return;
+            }
+            ans+=(((10+y)-x)*mul);
+            mul*=10;
+            s/=10;   
+        }
     }
-}
-vector<char>ans(n,'B');
-for(ll i=0;i<m;i++)
-{
-    ans[temp[i]]='G';
-}
-for(int i=0;i<n;i++)
-{
-    cout<<ans[i];
-}
-cout<<endl;
+    ans+=(mul*s);
+    cout<<ans<<endl;
+    return;
+  
+
 }
 int main()
 {
 ll t=1;
-// cin>>t;
+cin>>t;
 while(t--)
 {
 dontquit();

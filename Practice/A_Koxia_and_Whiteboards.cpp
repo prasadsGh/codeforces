@@ -17,33 +17,28 @@ ll power(ll a,ll n){ ll res=1; while(n){if(n%2){res*=a;n--;}else{a*=a;n/=2;}} re
 //----------------------code begines here-----------------------
 void dontquit()
 {
-    ll n; cin>>n;
-    ll mat[n][5];
-    for(ll i=0;i<n;i++)
-    {
-        for(ll j=0;j<5;j++) cin>>mat[i][j];
-    }
-    for(ll j=0;j<5;j++)
-    {
-        for(ll i=j+1;i<5;i++)
-        {
-            ll count=0, count1=0,count2=0;
-            for(ll k=0;k<n;k++)
-            {
-                if(mat[k][i]==1) count++;
-                if(mat[k][j]==1) count1++;
-                if(mat[k][j]==0 && mat[k][i]==0) count2++;
-            }
-            if((count+count1)>=n && count>=((n)/2) &&  count1>=((n)/2) && count2==0)
-            {
-                cout<<"YES\n";
-                return;
-            }
-            // cout<<count<<" ";
-        }
-        // cout<<endl;
-    }
-    cout<<"NO\n";
+    ll n,m; cin>>n>>m;
+    vector<ll>v(n),v1(m);
+    for(ll i=0;i<n;i++) cin>>v[i];
+    for(ll i=0;i<m;i++) cin>>v1[i];
+        ll sum=0;
+
+   priority_queue<ll,vector<ll>,greater<ll>>pq;
+   for(ll i=0;i<n;i++)
+   {
+    pq.push(v[i]);
+   }
+   for(ll i=0;i<m;i++)
+   {
+        pq.pop();
+        pq.push(v1[i]);
+   }
+   while(!pq.empty())
+   {
+    sum+=(pq.top());
+    pq.pop();
+   }
+   cout<<sum<<endl;
 
 
 }

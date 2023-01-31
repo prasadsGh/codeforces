@@ -25,50 +25,53 @@ ll power(ll a,ll n){ ll res=1; while(n){if(n%2){res*=a;n--;}else{a*=a;n/=2;}} re
 void dontquit()
 {  
 ll n; cin>>n;
-ll t; cin>>t;
-string s; cin>>s;
-ll count=0;
-vector<ll>temp;
+vector<ll>v(n);
+
 for(ll i=0;i<n;i++)
 {
-    if(s[i]=='G') temp.push_back(i);
+    cin>>v[i];
 }
-ll m=temp.size();
-if(m==0) 
+ll i=0,j=n-1;
+vector<ll>pre;
+sort(all(v));
+while(i<=j)
 {
-    cout<<s<<endl;
-    return;
-}
-int temp1=temp[0];
-while(t--)
-{
-    for(ll i=0;i<m;i++)
+    if(i==j)
     {
-        
-        if(temp[i]!=0 && (temp[i]-1)!=temp1)
-        {
-            temp[i]--;
-            temp1=temp[i]+1;
-        }
-        else temp1=temp[i];
-        
+        pre.push_back(v[i]);
+        break;
+    }
+    pre.push_back(v[j]);
+    j--;
+    pre.push_back(v[i]);
+    i++;
+}
+vector<ll>pre1(n);
+pre1[0]=0;
+for(ll i=1;i<n;i++)
+{
+    pre1[i]=pre1[i-1]+pre[i-1];
+}
+for(ll i=0;i<n;i++)
+{
+    if(pre1[i]==pre[i])
+    {
+        cout<<"NO\n";
+        return;
     }
 }
-vector<char>ans(n,'B');
-for(ll i=0;i<m;i++)
+cout<<"YES\n";
+for(ll i=0;i<n;i++)
 {
-    ans[temp[i]]='G';
-}
-for(int i=0;i<n;i++)
-{
-    cout<<ans[i];
+    cout<<pre[i]<<" ";
 }
 cout<<endl;
+
 }
 int main()
 {
 ll t=1;
-// cin>>t;
+cin>>t;
 while(t--)
 {
 dontquit();

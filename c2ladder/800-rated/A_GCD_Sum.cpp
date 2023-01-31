@@ -15,37 +15,25 @@ if (arr[i] == 0) {vect.push_back(i); for (int j = 2 * i; j <= n; j += i)arr[j] =
 //-----------------------BINARY EXPONTIATION----------------------
 ll power(ll a,ll n){ ll res=1; while(n){if(n%2){res*=a;n--;}else{a*=a;n/=2;}} return res;}
 //----------------------code begines here-----------------------
+ll f(ll n)
+{
+    ll count=0;
+    while(n)
+    {
+        count+=(n%10);
+        n/=10;
+    }
+    return count;
+}
 void dontquit()
 {
     ll n; cin>>n;
-    ll mat[n][5];
-    for(ll i=0;i<n;i++)
+    while(__gcd(n,f(n))==1)
     {
-        for(ll j=0;j<5;j++) cin>>mat[i][j];
+        n++;
     }
-    for(ll j=0;j<5;j++)
-    {
-        for(ll i=j+1;i<5;i++)
-        {
-            ll count=0, count1=0,count2=0;
-            for(ll k=0;k<n;k++)
-            {
-                if(mat[k][i]==1) count++;
-                if(mat[k][j]==1) count1++;
-                if(mat[k][j]==0 && mat[k][i]==0) count2++;
-            }
-            if((count+count1)>=n && count>=((n)/2) &&  count1>=((n)/2) && count2==0)
-            {
-                cout<<"YES\n";
-                return;
-            }
-            // cout<<count<<" ";
-        }
-        // cout<<endl;
-    }
-    cout<<"NO\n";
-
-
+    cout<<n<<endl;
+    return;
 }
 int main()
 {
