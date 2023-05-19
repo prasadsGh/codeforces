@@ -1,0 +1,131 @@
+//this code belongs to prasad patil
+#pragma GCC optimize("Ofast")
+#pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,avx2,fma")
+//this code belongs to prasad patil
+#pragma GCC optimize("unroll-loops")
+#include <bits/stdc++.h> 
+ 
+using namespace std;
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//function to get the product of very ver large number
+string multiply(string num1, string num2)
+{
+ int len1 = num1.size();
+int len2 = num2.size();
+if (len1 == 0 || len2 == 0)
+return "0";
+vector<int> result(len1 + len2, 0);
+int i_n1 = 0;
+int i_n2 = 0;
+ for (int i=len1-1; i>=0; i--)
+ {
+int carry = 0;
+int n1 = num1[i] - '0';
+i_n2 = 0;
+ for (int j=len2-1; j>=0; j--)
+ {
+int n2 = num2[j] - '0';
+int sum = n1*n2 + result[i_n1 + i_n2] + carry;
+carry = sum/10;
+result[i_n1 + i_n2] = sum % 10;
+i_n2++;
+}
+if (carry > 0)
+result[i_n1 + i_n2] += carry;
+i_n1++;
+}
+int i = result.size() - 1;
+while (i>=0 && result[i] == 0)
+i--;
+if (i == -1)
+return "0";
+string s = "";
+while (i >= 0)
+s += std::to_string(result[i--]);
+return s;
+}
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 
+typedef long long ll;
+typedef long double ld;
+typedef pair<int,int> p32;
+typedef pair<ll,ll> p64;
+typedef pair<double,double> pdd;
+typedef vector<ll> v64;
+typedef vector<int> v32;
+typedef vector<vector<int> > vv32;
+typedef vector<vector<ll> > vv64;
+typedef vector<vector<p64> > vvp64;
+typedef vector<p64> vp64;
+typedef vector<p32> vp32;
+//this code belongs to prasad patil
+ll MOD = 998244353;
+double eps = 1e-12;
+#define forn(i,e) for(ll i = 0; i < e; i++)
+#define forsn(i,s,e) for(ll i = s; i < e; i++)
+#define rforn(i,s) for(ll i = s; i >= 0; i--)
+#define rforsn(i,s,e) for(ll i = s; i >= e; i--)
+#define ln "\n"
+#define dbg(x) cout<<#x<<" = "<<x<<ln
+#define mp make_pair
+#define pb push_back
+#define fi first
+#define se second
+#define INF 2e18
+#define fast_cin() ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
+//this code belongs to prasad patil
+#define all(x) (x).begin(), (x).end()
+#define sz(x) ((ll)(x).size())
+ 
+
+void prasad(){
+    string a,b;
+    cin>>a>>b;
+    ll s1=0,s2=0,m1=0,m2=0,x1=0,x2=0,l1=0,l2=0;
+    ll n=a.length(), m=b.length();
+    for(int i=0;i<n;i++)
+    {
+        if(a[i]=='S') s1++;
+        else if(a[i]=='M') m1++;
+        else if(a[i]=='L')l1++;
+        else x1++;
+    }
+    for(int i=0;i<m;i++)
+    {
+        if(b[i]=='S') s2++;
+        else if(b[i]=='M') m2++;
+        else if(b[i]=='L')l2++;
+        else x2++;
+    }
+    if(l1==1 && l2!=1) cout<<">"<<endl;
+    else if(l2==1 && l1!=1) cout<<"<"<<endl;
+    else if(l2==l1 && l1!=0)
+    {
+        if(x1>x2) cout<<">\n";
+        else if(x1<x2) cout<<"<\n";
+        else cout<<"=\n";
+    }
+    else if(m1==1 && m2!=1) cout<<">"<<endl;
+    else if(m2==1 && m1!=1) cout<<"<"<<endl;
+    else if(m2==m1 && m1!=0) cout<<"="<<endl;
+    
+    else if(s1==1 && s2!=1) cout<<">"<<endl;
+    else if(s2==1 && s1!=1) cout<<"<"<<endl;
+    else if(s2==s1 && s1!=0)
+    {
+        if(x1>x2) cout<<"<\n";
+        else if(x1<x2) cout<<">\n";
+        else cout<<"=\n";
+    }
+    
+}
+int main()
+{
+ fast_cin();
+ ll t;
+ cin >> t;
+ while(t--) {
+ prasad();
+ }
+ return 0;
+}
